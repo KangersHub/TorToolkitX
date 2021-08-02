@@ -20,8 +20,8 @@ class TorToolkitDB(DataBaseHandle):
         # *** QUERIES ***
         if dburl is None:
             dburl = os.environ.get("DATABASE_URL", None)
-            if dburl is None:
-                dburl = ExecVars.DATABASE_URL
+        if dburl is None:
+            dburl = ExecVars.DATABASE_URL
 
         super().__init__(dburl)
 
@@ -84,25 +84,19 @@ class TorToolkitDB(DataBaseHandle):
         cur = self.scur()
 
         cur.execute(sql, (var_name,))
-        if cur.rowcount > 0:
-            row = cur.fetchone()
-            vtype = row[3]
-            val = row[2]
-            if vtype == "int":
-                val = int(row[2])
-            elif vtype == "str":
-                val = str(row[2])
-            elif vtype == "bool":
-                if row[2] == "true":
-                    val = True
-                else:
-                    val = False
-
-            return val, row[4]
-        else:
+        if cur.rowcount <= 0:
             return None, None
 
-        self.ccur(cur)
+        row = cur.fetchone()
+        vtype = row[3]
+        val = row[2]
+        if vtype == "bool":
+            val = row[2] == "true"
+        elif vtype == "int":
+            val = int(row[2])
+        elif vtype == "str":
+            val = str(row[2])
+        return val, row[4]
 
     def __del__(self):
         super().__del__()
@@ -116,8 +110,8 @@ class TtkUpload(DataBaseHandle):
         # *** QUERIES ***
         if dburl is None:
             dburl = os.environ.get("DATABASE_URL", None)
-            if dburl is None:
-                dburl = ExecVars.DATABASE_URL
+        if dburl is None:
+            dburl = ExecVars.DATABASE_URL
 
         super().__init__(dburl)
 
@@ -227,8 +221,8 @@ class TtkTorrents(DataBaseHandle):
     def __init__(self, dburl=None):
         if dburl is None:
             dburl = os.environ.get("DATABASE_URL", None)
-            if dburl is None:
-                dburl = ExecVars.DATABASE_URL
+        if dburl is None:
+            dburl = ExecVars.DATABASE_URL
 
         super().__init__(dburl)
         cur = self.scur()
@@ -296,8 +290,8 @@ class UserDB(DataBaseHandle):
     def __init__(self, dburl=None):
         if dburl is None:
             dburl = os.environ.get("DATABASE_URL", None)
-            if dburl is None:
-                dburl = ExecVars.DATABASE_URL
+        if dburl is None:
+            dburl = ExecVars.DATABASE_URL
 
         super().__init__(dburl)
         cur = self.scur()
@@ -320,25 +314,22 @@ class UserDB(DataBaseHandle):
 
     def get_var(self, var, user_id):
         user_id = str(user_id)
-        sql = "SELECT * FROM ttk_users WHERE user_id=%s"
         # search the cache
         user = self.shared_users.get(user_id)
         if user is not None:
             return user.get(var)
-        else:
-            cur = self.scur(dictcur=True)
+        cur = self.scur(dictcur=True)
 
-            cur.execute(sql, (user_id,))
-            if cur.rowcount > 0:
-                user = cur.fetchone()
-                jdata = user.get("json_data")
-                jdata = json.loads(jdata)
-                self.shared_users[user_id] = jdata
-                return jdata.get(var)
-            else:
-                return None
+        sql = "SELECT * FROM ttk_users WHERE user_id=%s"
+        cur.execute(sql, (user_id,))
+        if cur.rowcount <= 0:
+            return None
 
-            self.ccur(cur)
+        user = cur.fetchone()
+        jdata = user.get("json_data")
+        jdata = json.loads(jdata)
+        self.shared_users[user_id] = jdata
+        return jdata.get(var)
 
     def set_var(self, var, value, user_id):
         user_id = str(user_id)
@@ -380,28 +371,27 @@ class UserDB(DataBaseHandle):
 
         cur.execute(sql, (user_id,))
 
-        if cur.rowcount > 0:
-            row = cur.fetchone()
-            self.ccur(cur)
-
-            if row["rclone_file"] is None:
-                return False
-            else:
-                path = os.path.join(os.getcwd(), "userdata")
-                if not os.path.exists(path):
-                    os.mkdir(path)
-
-                path = os.path.join(path, user_id)
-                if not os.path.exists(path):
-                    os.mkdir(path)
-
-                path = os.path.join(path, "rclone.conf")
-                with open(path, "wb") as rfile:
-                    rfile.write(row["rclone_file"])
-
-                return path
-        else:
+        if cur.rowcount <= 0:
             return False
+
+        row = cur.fetchone()
+        self.ccur(cur)
+
+        if row["rclone_file"] is None:
+            return False
+        path = os.path.join(os.getcwd(), "userdata")
+        if not os.path.exists(path):
+            os.mkdir(path)
+
+        path = os.path.join(path, user_id)
+        if not os.path.exists(path):
+            os.mkdir(path)
+
+        path = os.path.join(path, "rclone.conf")
+        with open(path, "wb") as rfile:
+            rfile.write(row["rclone_file"])
+
+        return path
 
     def get_thumbnail(self, user_id):
         user_id = str(user_id)
@@ -410,27 +400,26 @@ class UserDB(DataBaseHandle):
 
         cur.execute(sql, (user_id,))
 
-        if cur.rowcount > 0:
-            row = cur.fetchone()
-            self.ccur(cur)
-            if row["thumbnail"] is None:
-                return False
-            else:
-                path = os.path.join(os.getcwd(), "userdata")
-                if not os.path.exists(path):
-                    os.mkdir(path)
-
-                path = os.path.join(path, user_id)
-                if not os.path.exists(path):
-                    os.mkdir(path)
-
-                path = os.path.join(path, "thumbnail.jpg")
-                with open(path, "wb") as rfile:
-                    rfile.write(row["thumbnail"])
-
-                return path
-        else:
+        if cur.rowcount <= 0:
             return False
+
+        row = cur.fetchone()
+        self.ccur(cur)
+        if row["thumbnail"] is None:
+            return False
+        path = os.path.join(os.getcwd(), "userdata")
+        if not os.path.exists(path):
+            os.mkdir(path)
+
+        path = os.path.join(path, user_id)
+        if not os.path.exists(path):
+            os.mkdir(path)
+
+        path = os.path.join(path, "thumbnail.jpg")
+        with open(path, "wb") as rfile:
+            rfile.write(row["thumbnail"])
+
+        return path
 
     def set_rclone(self, rclonefile, user_id):
         user_id = str(user_id)

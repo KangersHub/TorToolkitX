@@ -36,7 +36,7 @@ torlog = logging.getLogger(__name__)
 # this function is to ensure that only one magnet is passed at a time
 def get_magnets(text):
     matches = [i for i in re.finditer("magnet:", text)]
-    magnets = list()
+    magnets = []
 
     for i in range(len(matches)):
         if i == len(matches) - 1:
@@ -53,7 +53,7 @@ def get_magnets(text):
 
 
 def get_entities(msg):
-    urls = list()
+    urls = []
 
     for i in msg.entities:
         if isinstance(i, types.MessageEntityUrl):
@@ -62,7 +62,7 @@ def get_entities(msg):
         elif isinstance(i, types.MessageEntityTextUrl):
             urls.append(i.url)
 
-    if len(urls) > 0:
+    if urls:
         return urls[0]
     else:
         return None
@@ -88,12 +88,16 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
             if isinstance(i, types.DocumentAttributeFilename):
                 name = i.file_name
 
-        if name is None:
+        if (
+            name is None
+            or name is not None
+            and not name.lower().endswith(".torrent")
+        ):
             await omess.reply(
                 "This is not a torrent file to leech from. Send <code>.torrent</code> file",
                 parse_mode="html",
             )
-        elif name.lower().endswith(".torrent"):
+        else:
             rmess = await omess.reply("Downloading the torrent file.")
 
             # not worring about the download location now
@@ -114,9 +118,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                         dl_path = newpath
                 else:
                     newpath = await handle_zips(dl_path, is_zip, rmess, not rclone)
-                    if newpath is False:
-                        pass
-                    else:
+                    if newpath is not False:
                         dl_path = newpath
 
                 # REMOVED HEROKU BLOCK
@@ -135,7 +137,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                             task=ul_task,
                         )
                     except:
-                        rdict = dict()
+                        rdict = {}
                         torlog.exception("Exception in torrent file")
 
                     await ul_task.set_inactive()
@@ -143,7 +145,6 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                         omess, rdict, dl_task.hash, path=dl_path, size=ul_size
                     )
                     torlog.info("Here are the fiels uploaded {}".format(rdict))
-                    await QBittorrentWrap.delete_this(dl_task.hash)
                 else:
                     res = await rclone_driver(dl_path, rmess, omess, dl_task)
                     if res is None:
@@ -151,20 +152,13 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                             "<b>UPLOAD TO DRIVE FAILED CHECK LOGS</b>",
                             parse_mode="html",
                         )
-                    await QBittorrentWrap.delete_this(dl_task.hash)
-
+                await QBittorrentWrap.delete_this(dl_task.hash)
             else:
                 await errored_message(omess, rmess)
 
             await clear_stuff(path)
             await clear_stuff(dl_path)
             return dl_path
-        else:
-            await omess.reply(
-                "This is not a torrent file to leech from. Send <code>.torrent</code> file",
-                parse_mode="html",
-            )
-
     elif msg.raw_text is not None:
         if msg.raw_text.lower().startswith("magnet:"):
             rmess = await omess.reply("Scanning....")
@@ -185,9 +179,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                         dl_path = newpath
                 else:
                     newpath = await handle_zips(dl_path, is_zip, rmess, not rclone)
-                    if newpath is False:
-                        pass
-                    else:
+                    if newpath is not False:
                         dl_path = newpath
 
                 # REMOVED  HEROKU BLOCK
@@ -209,7 +201,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                             task=ul_task,
                         )
                     except:
-                        rdict = dict()
+                        rdict = {}
                         torlog.exception("Exception in magnet")
 
                     await ul_task.set_inactive()
@@ -218,8 +210,6 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                     )
 
                     torlog.info("Here are the files to be uploaded {}".format(rdict))
-                    await QBittorrentWrap.delete_this(dl_task.hash)
-
                 else:
                     res = await rclone_driver(dl_path, rmess, omess, dl_task)
                     if res is None:
@@ -227,7 +217,8 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                             "<b>UPLOAD TO DRIVE FAILED CHECK LOGS</b>",
                             parse_mode="html",
                         )
-                    await QBittorrentWrap.delete_this(dl_task.hash)
+                await QBittorrentWrap.delete_this(dl_task.hash)
+
             else:
                 await errored_message(omess, rmess)
 
@@ -264,9 +255,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                         dl_path = newpath
                 else:
                     newpath = await handle_zips(dl_path, is_zip, rmess, not rclone)
-                    if newpath is False:
-                        pass
-                    else:
+                    if newpath is not False:
                         dl_path = newpath
 
                 # REMOVED  HEROKU BLOCK
@@ -286,7 +275,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                             task=ul_task,
                         )
                     except:
-                        rdict = dict()
+                        rdict = {}
                         torlog.exception("Exception in torrent link")
 
                     await ul_task.set_inactive()
@@ -295,7 +284,6 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                     )
 
                     torlog.info("Here are the fiels uploaded {}".format(rdict))
-                    await QBittorrentWrap.delete_this(dl_task.hash)
                 else:
                     res = await rclone_driver(dl_path, rmess, omess, dl_task)
                     if res is None:
@@ -303,7 +291,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                             "<b>UPLOAD TO DRIVE FAILED CHECK LOGS</b>",
                             parse_mode="html",
                         )
-                    await QBittorrentWrap.delete_this(dl_task.hash)
+                await QBittorrentWrap.delete_this(dl_task.hash)
             else:
                 await errored_message(omess, rmess)
 
@@ -382,9 +370,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                         path = newpath
                 else:
                     newpath = await handle_zips(path, is_zip, rmsg, not rclone)
-                    if newpath is False:
-                        pass
-                    else:
+                    if newpath is not False:
                         path = newpath
 
                 ul_size = calculate_size(path)
@@ -404,7 +390,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                             task=ul_task,
                         )
                     except:
-                        rdict = dict()
+                        rdict = {}
                         torlog.exception("Exception in Direct links.")
 
                     await ul_task.set_inactive()

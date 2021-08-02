@@ -17,15 +17,9 @@ torlog = logging.getLogger(__name__)
 
 def get_num(no):
     nums = ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"]
-    numstr = ""
-
     if no <= 9:
         return nums[no]
-    else:
-        for i in str(no):
-            numstr += nums[int(i)]
-
-    return numstr
+    return "".join(nums[int(i)] for i in str(no))
 
 
 async def create_status_menu(event):
@@ -110,24 +104,24 @@ async def create_status_user_menu(event):
             try:
                 if isinstance(i, QBTask):
                     omsg = await i.get_original_message()
-                    if not (event.sender_id == omsg.sender_id):
+                    if event.sender_id != omsg.sender_id:
                         continue
                     data = "torcancel {} {}".format(i.hash, omsg.sender_id)
                 if isinstance(i, MegaDl):
-                    if not (event.sender_id == await i.get_sender_id()):
+                    if event.sender_id != await i.get_sender_id():
                         continue
                     data = "torcancel megadl {} {}".format(
                         await i.get_gid(), await i.get_sender_id()
                     )
 
                 if isinstance(i, ARTask):
-                    if not (event.sender_id == await i.get_sender_id()):
+                    if event.sender_id != await i.get_sender_id():
                         continue
                     data = "torcancel aria2 {} {}".format(
                         await i.get_gid(), await i.get_sender_id()
                     )
                 if isinstance(i, TGUploadTask):
-                    if not event.sender_id == await i.get_sender_id():
+                    if event.sender_id != await i.get_sender_id():
                         continue
                     message = await i.get_message()
                     data = "upcancel {} {} {}".format(
@@ -135,7 +129,7 @@ async def create_status_user_menu(event):
                     )
                 if isinstance(i, RCUploadTask):
                     omsg = await i.get_original_message()
-                    if not event.sender_id == omsg.sender_id:
+                    if event.sender_id != omsg.sender_id:
                         continue
                     data = "upcancel {} {} {}".format(
                         omsg.chat_id, omsg.id, omsg.sender_id

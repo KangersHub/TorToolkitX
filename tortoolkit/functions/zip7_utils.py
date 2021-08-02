@@ -19,9 +19,7 @@ async def cli_call(cmd: Union[str, List[str]]) -> Tuple[str, str]:
     torlog.info("Got cmd:- " + str(cmd))
     if isinstance(cmd, str):
         cmd = shlex.split(cmd)
-    elif isinstance(cmd, (list, tuple)):
-        pass
-    else:
+    elif not isinstance(cmd, (list, tuple)):
         return None, None
 
     torlog.info("Exc cmd:- " + str(cmd))
@@ -39,68 +37,61 @@ async def cli_call(cmd: Union[str, List[str]]) -> Tuple[str, str]:
 
 
 async def split_in_zip(path, size=None):
-    if os.path.exists(path):
-        if os.path.isfile(path):
-            fname = os.path.basename(path)
-            bdir = os.path.dirname(path)
-            bdir = os.path.join(bdir, str(time.time()).replace(".", ""))
-            if not os.path.exists(bdir):
-                os.mkdir(bdir)
-
-            if size is None:
-                size = 1900
-            else:
-                size = int(size)
-                size = int(size / (1024 * 1024)) - 10  # for safe
-            cmd = f'7z a -tzip -mx=0 "{bdir}/{fname}.zip" "{path}" -v{size}m '
-
-            _, err, rcode = await cli_call(cmd)
-
-            if err:
-                torlog.error(f"Error in zip split {err}")
-                return None
-            else:
-                return bdir
-
-        else:
-            return None
-    else:
+    if not os.path.exists(path) or not os.path.isfile(path):
         return None
+    fname = os.path.basename(path)
+    bdir = os.path.dirname(path)
+    bdir = os.path.join(bdir, str(time.time()).replace(".", ""))
+    if not os.path.exists(bdir):
+        os.mkdir(bdir)
+
+    if size is None:
+        size = 1900
+    else:
+        size = int(size)
+        size = int(size / (1024 * 1024)) - 10  # for safe
+    cmd = f'7z a -tzip -mx=0 "{bdir}/{fname}.zip" "{path}" -v{size}m '
+
+    _, err, rcode = await cli_call(cmd)
+
+    if not err:
+        return bdir
+
+    torlog.error(f"Error in zip split {err}")
+    return None
 
 
 async def add_to_zip(path, size=None, split=True):
-    if os.path.exists(path):
-        fname = os.path.basename(path)
-        bdir = os.path.dirname(path)
-        bdir = os.path.join(bdir, str(time.time()).replace(".", ""))
-        if not os.path.exists(bdir):
-            os.mkdir(bdir)
-
-        bdir = os.path.join(bdir, fname)
-        if not os.path.exists(bdir):
-            os.mkdir(bdir)
-
-        if size is None:
-            size = 1900
-        else:
-            size = int(size)
-            size = int(size / (1024 * 1024)) - 10  # for safe
-
-        total_size = get_size(path)
-        if total_size > size and split:
-            cmd = f'7z a -tzip -mx=0 "{bdir}/{fname}.zip" "{path}" -v{size}m'
-        else:
-            cmd = f'7z a -tzip -mx=0 "{bdir}/{fname}.zip" "{path}"'
-
-        _, err, rcode = await cli_call(cmd)
-
-        if err:
-            torlog.error(f"Error in zip split {err}")
-            return None
-        else:
-            return bdir
-    else:
+    if not os.path.exists(path):
         return None
+    fname = os.path.basename(path)
+    bdir = os.path.dirname(path)
+    bdir = os.path.join(bdir, str(time.time()).replace(".", ""))
+    if not os.path.exists(bdir):
+        os.mkdir(bdir)
+
+    bdir = os.path.join(bdir, fname)
+    if not os.path.exists(bdir):
+        os.mkdir(bdir)
+
+    if size is None:
+        size = 1900
+    else:
+        size = int(size)
+        size = int(size / (1024 * 1024)) - 10  # for safe
+
+    total_size = get_size(path)
+    if total_size > size and split:
+        cmd = f'7z a -tzip -mx=0 "{bdir}/{fname}.zip" "{path}" -v{size}m'
+    else:
+        cmd = f'7z a -tzip -mx=0 "{bdir}/{fname}.zip" "{path}"'
+
+    _, err, rcode = await cli_call(cmd)
+
+    if not err:
+        return bdir
+    torlog.error(f"Error in zip split {err}")
+    return None
 
 
 def get_size(start_path="."):
@@ -116,45 +107,41 @@ def get_size(start_path="."):
 
 
 async def extract_archive(path, password=""):
-    if os.path.exists(path):
-        if os.path.isfile(path):
-            if str(path).endswith(
-                (".zip", "7z", "tar", "gzip2", "iso", "wim", "rar", "tar.gz", "tar.bz2")
-            ):
-                # check userdata
-                userpath = os.path.join(os.getcwd(), "userdata")
-                if not os.path.exists(userpath):
-                    os.mkdir(userpath)
-
-                extpath = os.path.join(userpath, str(time.time()).replace(".", ""))
-                os.mkdir(extpath)
-
-                extpath = os.path.join(extpath, os.path.basename(path))
-                if not os.path.exists(extpath):
-                    os.mkdir(extpath)
-
-                if str(path).endswith(("tar", "tar.gz", "tar.bz2")):
-                    cmd = f'tar -xvf "{path}" -C "{extpath}" --warning=none'
-                else:
-                    cmd = f'7z e -y "{path}" "-o{extpath}" "-p{password}"'
-
-                out, err, rcode = await cli_call(cmd)
-
-                if err:
-                    if "Wrong password" in err:
-                        return "Wrong Password"
-                    else:
-                        torlog.error(err)
-                        torlog.error(out)
-                        return False
-                else:
-                    return extpath
-        else:
-            # False means that the stuff can be upload but cant be extracted as its a dir
-            return False
-    else:
+    if not os.path.exists(path):
         # None means fetal error and cant be ignored
         return None
+    if not os.path.isfile(path):
+        # False means that the stuff can be upload but cant be extracted as its a dir
+        return False
+    if str(path).endswith(
+                (".zip", "7z", "tar", "gzip2", "iso", "wim", "rar", "tar.gz", "tar.bz2")
+            ):
+        # check userdata
+        userpath = os.path.join(os.getcwd(), "userdata")
+        if not os.path.exists(userpath):
+            os.mkdir(userpath)
+
+        extpath = os.path.join(userpath, str(time.time()).replace(".", ""))
+        os.mkdir(extpath)
+
+        extpath = os.path.join(extpath, os.path.basename(path))
+        if not os.path.exists(extpath):
+            os.mkdir(extpath)
+
+        if str(path).endswith(("tar", "tar.gz", "tar.bz2")):
+            cmd = f'tar -xvf "{path}" -C "{extpath}" --warning=none'
+        else:
+            cmd = f'7z e -y "{path}" "-o{extpath}" "-p{password}"'
+
+        out, err, rcode = await cli_call(cmd)
+
+        if not err:
+            return extpath
+        if "Wrong password" in err:
+            return "Wrong Password"
+        torlog.error(err)
+        torlog.error(out)
+        return False
 
 
 # 7z e -y {path} {ext_path}
