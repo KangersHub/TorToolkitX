@@ -11,11 +11,10 @@ def human_readable_bytes(value, digits=2, delim="", postfix=""):
         return None
     chosen_unit = "B"
     for unit in ("KiB", "MiB", "GiB", "TiB"):
-        if value > 1000:
-            value /= 1024
-            chosen_unit = unit
-        else:
+        if value <= 1000:
             break
+        value /= 1024
+        chosen_unit = unit
     return f"{value:.{digits}f}" + delim + chosen_unit + postfix
 
 

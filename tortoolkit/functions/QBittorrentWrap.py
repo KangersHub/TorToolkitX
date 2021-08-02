@@ -356,10 +356,6 @@ async def update_progress(
                         buttons=None,
                     )
                     return [savepath, task]
-                else:
-                    # return await update_progress(client,message,torrent)
-                    pass
-
             except (MessageNotModifiedError, FloodWaitError) as e:
                 torlog.error("{}".format(e))
 
@@ -447,37 +443,31 @@ async def delete_this(ext_hash):
 async def get_status(message, all=False):
     client = await get_client()
     tors = await get_torrent_info(client)
-    olen = 0
-
     if len(tors) > 0:
         msg = ""
+        olen = 0
+
         for i in tors:
             if i.progress == 1 and not all:
                 continue
-            else:
-                olen += 1
-                msg += "📥 <b>{} | {}% | {}/{}({}) | {} | {} | S:{} | L:{} | {}</b>\n\n".format(
-                    i.name,
-                    round(i.progress * 100, 2),
-                    human_readable_bytes(i.completed),
-                    human_readable_bytes(i.size),
-                    human_readable_bytes(i.total_size),
-                    human_readable_bytes(i.dlspeed, postfix="/s"),
-                    human_readable_timedelta(i.eta),
-                    i.num_seeds,
-                    i.num_leechs,
-                    i.state,
-                )
+            olen += 1
+            msg += "📥 <b>{} | {}% | {}/{}({}) | {} | {} | S:{} | L:{} | {}</b>\n\n".format(
+                i.name,
+                round(i.progress * 100, 2),
+                human_readable_bytes(i.completed),
+                human_readable_bytes(i.size),
+                human_readable_bytes(i.total_size),
+                human_readable_bytes(i.dlspeed, postfix="/s"),
+                human_readable_timedelta(i.eta),
+                i.num_seeds,
+                i.num_leechs,
+                i.state,
+            )
         if msg.strip() == "":
             return "No torrents running currently...."
-        return msg
     else:
         msg = "No torrents running currently...."
-        return msg
-
-    if olen == 0:
-        msg = "No torrents running currently...."
-        return msg
+    return msg
 
 
 def progress_bar(percentage):
@@ -485,14 +475,9 @@ def progress_bar(percentage):
     # percentage is on the scale of 0-1
     comp = get_val("COMPLETED_STR")
     ncomp = get_val("REMAINING_STR")
-    pr = ""
-
-    for i in range(1, 11):
-        if i <= int(percentage * 10):
-            pr += comp
-        else:
-            pr += ncomp
-    return pr
+    return "".join(
+        comp if i <= int(percentage * 10) else ncomp for i in range(1, 11)
+    )
 
 
 async def deregister_torrent(hashid):
@@ -507,11 +492,7 @@ async def register_torrent(entity, message, user_msg=None, magnet=False, file=Fa
 
     # refresh message
     message = await message.client.get_messages(message.chat_id, ids=message.id)
-    if user_msg is None:
-        omess = await message.get_reply_message()
-    else:
-        omess = user_msg
-
+    omess = await message.get_reply_message() if user_msg is None else user_msg
     if magnet:
         torlog.info(f"magnet :- {magnet}")
         torrent = await add_torrent_magnet(entity, message)

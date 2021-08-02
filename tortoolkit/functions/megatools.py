@@ -69,10 +69,15 @@ async def megadl(link, update_msg, user_msg):
 
     while True:
         dl_info = mega_client.getDownloadInfo(dl_add_info["gid"])
-        if dl_info["state"] not in [
-            constants.State.TYPE_STATE_CANCELED,
-            constants.State.TYPE_STATE_FAILED,
-        ]:
+        if dl_info["state"] == constants.State.TYPE_STATE_CANCELED:
+            await dl_task.set_inactive("Canceled by user.")
+            return dl_task
+
+        elif dl_info["state"] == constants.State.TYPE_STATE_FAILED:
+            await dl_task.set_inactive(dl_info["error_string"])
+            return dl_task
+
+        else:
             if dl_info["state"] == constants.State.TYPE_STATE_COMPLETED:
                 await dl_task.set_done()
                 await update_msg.edit("**Download Complete**.")
@@ -84,12 +89,6 @@ async def megadl(link, update_msg, user_msg):
                 await asyncio.sleep(get_val("EDIT_SLEEP_SECS"))
             except Exception as e:
                 torlog.info(e)
-        else:
-            if dl_info["state"] == constants.State.TYPE_STATE_CANCELED:
-                await dl_task.set_inactive("Canceled by user.")
-            else:
-                await dl_task.set_inactive(dl_info["error_string"])
-            return dl_task
 
 
 async def remove_mega_dl(gid):

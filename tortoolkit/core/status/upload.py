@@ -97,14 +97,9 @@ class TGUploadTask(Status):
         # percentage is on the scale of 0-1
         comp = get_val("COMPLETED_STR")
         ncomp = get_val("REMAINING_STR")
-        pr = ""
-
-        for i in range(1, 11):
-            if i <= int(percentage * 10):
-                pr += comp
-            else:
-                pr += ncomp
-        return pr
+        return "".join(
+            comp if i <= int(percentage * 10) else ncomp for i in range(1, 11)
+        )
 
 
 class RCUploadTask(Status):
@@ -143,33 +138,27 @@ class RCUploadTask(Status):
         nstr = nstr.split(",")
         prg = nstr[1].strip("% ")
         prg = "Progress:- {} - {}%".format(self.progress_bar(prg), prg)
-        progress = "<b>Uploaded:- {} \n{} \nSpeed:- {} \nETA:- {}</b> \n<b>Using Engine:- </b><code>RCLONE</code>".format(
+        return "<b>Uploaded:- {} \n{} \nSpeed:- {} \nETA:- {}</b> \n<b>Using Engine:- </b><code>RCLONE</code>".format(
             nstr[0], prg, nstr[2], nstr[3].replace("ETA", "")
         )
-        return progress
 
     def progress_bar(self, percentage):
         """Returns a progress bar for download"""
         # percentage is on the scale of 0-1
         comp = get_val("COMPLETED_STR")
         ncomp = get_val("REMAINING_STR")
-        pr = ""
-
         try:
             percentage = int(percentage)
         except:
             percentage = 0
 
-        for i in range(1, 11):
-            if i <= int(percentage / 10):
-                pr += comp
-            else:
-                pr += ncomp
-        return pr
+        return "".join(
+            comp if i <= int(percentage / 10) else ncomp for i in range(1, 11)
+        )
 
     async def update_message(self):
         progress = await self.create_message()
-        if not self._prev_cont == progress:
+        if self._prev_cont != progress:
             # kept just in case
             self._prev_cont = progress
             try:

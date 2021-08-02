@@ -166,14 +166,9 @@ class QBTask(Status):
         # percentage is on the scale of 0-1
         comp = get_val("COMPLETED_STR")
         ncomp = get_val("REMAINING_STR")
-        pr = ""
-
-        for i in range(1, 11):
-            if i <= int(percentage * 10):
-                pr += comp
-            else:
-                pr += ncomp
-        return pr
+        return "".join(
+            comp if i <= int(percentage * 10) else ncomp for i in range(1, 11)
+        )
 
 
 class ARTask(Status):
@@ -309,14 +304,9 @@ class ARTask(Status):
         # percentage is on the scale of 0-1
         comp = get_val("COMPLETED_STR")
         ncomp = get_val("REMAINING_STR")
-        pr = ""
-
-        for i in range(1, 11):
-            if i <= int(percentage * 10):
-                pr += comp
-            else:
-                pr += ncomp
-        return pr
+        return "".join(
+            comp if i <= int(percentage * 10) else ncomp for i in range(1, 11)
+        )
 
 
 class MegaDl(Status):
@@ -449,11 +439,6 @@ class MegaDl(Status):
         # percentage is on the scale of 0-1
         comp = get_val("COMPLETED_STR")
         ncomp = get_val("REMAINING_STR")
-        pr = ""
-
-        for i in range(1, 11):
-            if i <= int(percentage * 10):
-                pr += comp
-            else:
-                pr += ncomp
-        return pr
+        return "".join(
+            comp if i <= int(percentage * 10) else ncomp for i in range(1, 11)
+        )

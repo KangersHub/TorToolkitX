@@ -29,7 +29,7 @@ def get_caption(post: Post) -> str:
 
 async def upload_to_tg(
     message, dirname: str, post: Post, sender_id: int
-) -> None:  # pylint: disable=R0912
+) -> None:    # pylint: disable=R0912
     """uploads downloaded post from local to telegram servers"""
     pto = (".jpg", ".jpeg", ".png", ".bmp")
     vdo = (".mkv", ".mp4", ".webm")
@@ -42,26 +42,18 @@ async def upload_to_tg(
         for path in natsorted(os.listdir(dirname)):
             ab_path = dirname + "/" + path
             paths.append(ab_path)
-            if str(path).endswith(pto):
-                if captioned:
-                    media.append(ab_path)
-                else:
-                    media.append(ab_path)
+            if (
+                str(path).endswith(pto)
+                or not str(path).endswith(pto)
+                and str(path).endswith(vdo)
+            ):
+                if not captioned:
                     caption = get_caption(post)[:1023]
                     caption += (
                         f"\n\n<a href='tg://user?id={sender_id}'>Done</a>\n#uploads\n"
                     )
                     captioned = True
-            elif str(path).endswith(vdo):
-                if captioned:
-                    media.append(ab_path)
-                else:
-                    media.append(ab_path)
-                    caption = get_caption(post)[:1023]
-                    caption += (
-                        f"\n\n<a href='tg://user?id={sender_id}'>Done</a>\n#uploads\n"
-                    )
-                    captioned = True
+                media.append(ab_path)
         if media:
             await message.client.send_file(
                 message.chat_id,
@@ -157,54 +149,13 @@ async def _insta_post_downloader(message):
         save_metadata=False,
         compress_json=False,
     )
-    if False:
-        # add auth code here
-        pass
-    else:
-        await message.edit(
-            "Login Credentials not found.\n`[NOTE]`: "
-            "**Private stuff will not be downloaded**"
-        )
-        await asyncio.sleep(2)
+    await message.edit(
+        "Login Credentials not found.\n`[NOTE]`: "
+        "**Private stuff will not be downloaded**"
+    )
+    await asyncio.sleep(2)
 
     p = r"^https:\/\/www\.instagram\.com\/(p|tv|reel)\/([A-Za-z0-9\-_]*)\/(\?igshid=[a-zA-Z0-9]*)?$"
     match = re.search(p, omess.raw_text)
     print(omess.raw_text)
-    if False:
-        # have plans here
-        pass
-    elif match:
-        dtypes = {"p": "POST", "tv": "IGTV", "reel": "REELS"}
-        d_t = dtypes.get(match.group(1))
-        if not d_t:
-            await message.edit("Unsupported Format")
-            return
-        await message.edit(f"`Fetching {d_t} Content.`")
-        shortcode = match.group(2)
-        post = get_post(insta, shortcode)
-        try:
-            download_post(insta, post)
-            await upload_to_tg(
-                message,
-                dirname.format(target=post.owner_username),
-                post,
-                sender_id=omess.sender_id,
-            )
-        except (KeyError, LoginRequiredException):
-            await message.edit("Post is private. Cant Download")
-            return
-        except FloodWaitError as f_w:
-            await asyncio.sleep(f_w.seconds + 5)
-            await upload_to_tg(
-                message,
-                dirname.format(target=post.owner_username),
-                post,
-                sender_id=omess.sender_id,
-            )
-        finally:
-            shutil.rmtree(
-                dirname.format(target=post.owner_username), ignore_errors=True
-            )
-
-    else:
-        await message.edit("`Invalid Link that you provided`")
+    await message.edit("`Invalid Link that you provided`")

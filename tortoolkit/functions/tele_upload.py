@@ -81,11 +81,7 @@ async def upload_handel(
 
         if not from_in:
             updb.register_upload(message.chat_id, message.id)
-            if user_msg is None:
-                sup_mes = await message.get_reply_message()
-            else:
-                sup_mes = user_msg
-
+            sup_mes = await message.get_reply_message() if user_msg is None else user_msg
             if task is not None:
                 await task.set_message(message)
                 await task.set_original_message(sup_mes)
@@ -150,14 +146,12 @@ async def upload_handel(
                     "**FILE LARGER THAN 2GB, SPLITTING NOW...**\n**Using Algo FFMPEG VIDEO SPLIT**"
                 )
                 split_dir = await vids_helpers.split_file(path, get_val("TG_UP_LIMIT"))
-                await todel.delete()
             else:
                 todel = await message.reply(
                     "**FILE LARGER THAN 2GB, SPLITTING NOW...**\n**`Using Algo FFMPEG ZIP SPLIT`**"
                 )
                 split_dir = await zip7_utils.split_in_zip(path, get_val("TG_UP_LIMIT"))
-                await todel.delete()
-
+            await todel.delete()
             if task is not None:
                 await task.add_a_dir(split_dir)
 
@@ -166,11 +160,7 @@ async def upload_handel(
 
             if not from_in:
                 updb.register_upload(message.chat_id, message.id)
-                if user_msg is None:
-                    sup_mes = await message.get_reply_message()
-                else:
-                    sup_mes = user_msg
-
+                sup_mes = await message.get_reply_message() if user_msg is None else user_msg
                 if task is not None:
                     await task.set_message(message)
                     await task.set_original_message(sup_mes)
@@ -215,15 +205,11 @@ async def upload_handel(
                 else:
                     await message.edit(buttons=None)
                 updb.deregister_upload(message.chat_id, message.id)
-            # spliting file logic blah blah
+                    # spliting file logic blah blah
         else:
             if not from_in:
                 updb.register_upload(message.chat_id, message.id)
-                if user_msg is None:
-                    sup_mes = await message.get_reply_message()
-                else:
-                    sup_mes = user_msg
-
+                sup_mes = await message.get_reply_message() if user_msg is None else user_msg
                 if task is not None:
                     await task.set_message(message)
                     await task.set_original_message(sup_mes)
@@ -274,10 +260,11 @@ async def upload_a_file(
             path, message, force_edit, database, thumb_path, user_msg
         )
     queue = message.client.queue
-    if database is not None:
-        if database.get_cancel_status(message.chat_id, message.id):
-            # add os remove here
-            return None
+    if database is not None and database.get_cancel_status(
+        message.chat_id, message.id
+    ):
+        # add os remove here
+        return None
     if not os.path.exists(path):
         return None
 
@@ -360,52 +347,79 @@ async def upload_a_file(
 
         if message.media and force_edit:
             out_msg = await msg.edit(file=path, text=caption_str)
+        elif ftype == "video" and not force_docs:
+            try:
+                if thumb_path is not None:
+                    thumb = thumb_path
+                else:
+                    thumb = await thumb_manage.get_thumbnail(opath)
+            except:
+                thumb = None
+                torlog.exception("Error in thumb")
+            try:
+                attrs, _ = get_attributes(opath, supports_streaming=True)
+                out_msg = await msg.client.send_file(
+                    msg.to_id,
+                    file=path,
+                    parse_mode="html",
+                    thumb=thumb,
+                    caption=caption_str,
+                    reply_to=message.id,
+                    supports_streaming=True,
+                    progress_callback=lambda c, t: progress(
+                        c, t, msg, file_name, start_time, tout, message, database
+                    ),
+                    attributes=attrs,
+                )
+            except VideoContentTypeInvalidError:
+                attrs, _ = get_attributes(opath, force_document=True)
+                torlog.warning("Streamable file send failed fallback to document.")
+                out_msg = await msg.client.send_file(
+                    msg.to_id,
+                    file=path,
+                    parse_mode="html",
+                    caption=caption_str,
+                    thumb=thumb,
+                    reply_to=message.id,
+                    force_document=True,
+                    progress_callback=lambda c, t: progress(
+                        c, t, msg, file_name, start_time, tout, message, database
+                    ),
+                    attributes=attrs,
+                )
+            except Exception:
+                torlog.error("Error:- {}".format(traceback.format_exc()))
+        elif ftype == "audio" and not force_docs:
+            # not sure about this if
+            attrs, _ = get_attributes(opath)
+            out_msg = await msg.client.send_file(
+                msg.to_id,
+                file=path,
+                parse_mode="html",
+                caption=caption_str,
+                reply_to=message.id,
+                progress_callback=lambda c, t: progress(
+                    c, t, msg, file_name, start_time, tout, message, database
+                ),
+                attributes=attrs,
+            )
         else:
-
-            if ftype == "video" and not force_docs:
-                try:
-                    if thumb_path is not None:
-                        thumb = thumb_path
-                    else:
-                        thumb = await thumb_manage.get_thumbnail(opath)
-                except:
-                    thumb = None
-                    torlog.exception("Error in thumb")
-                try:
-                    attrs, _ = get_attributes(opath, supports_streaming=True)
-                    out_msg = await msg.client.send_file(
-                        msg.to_id,
-                        file=path,
-                        parse_mode="html",
-                        thumb=thumb,
-                        caption=caption_str,
-                        reply_to=message.id,
-                        supports_streaming=True,
-                        progress_callback=lambda c, t: progress(
-                            c, t, msg, file_name, start_time, tout, message, database
-                        ),
-                        attributes=attrs,
-                    )
-                except VideoContentTypeInvalidError:
-                    attrs, _ = get_attributes(opath, force_document=True)
-                    torlog.warning("Streamable file send failed fallback to document.")
-                    out_msg = await msg.client.send_file(
-                        msg.to_id,
-                        file=path,
-                        parse_mode="html",
-                        caption=caption_str,
-                        thumb=thumb,
-                        reply_to=message.id,
-                        force_document=True,
-                        progress_callback=lambda c, t: progress(
-                            c, t, msg, file_name, start_time, tout, message, database
-                        ),
-                        attributes=attrs,
-                    )
-                except Exception:
-                    torlog.error("Error:- {}".format(traceback.format_exc()))
-            elif ftype == "audio" and not force_docs:
-                # not sure about this if
+            if force_docs:
+                attrs, _ = get_attributes(opath, force_document=True)
+                out_msg = await msg.client.send_file(
+                    msg.to_id,
+                    file=path,
+                    parse_mode="html",
+                    caption=caption_str,
+                    reply_to=message.id,
+                    force_document=True,
+                    progress_callback=lambda c, t: progress(
+                        c, t, msg, file_name, start_time, tout, message, database
+                    ),
+                    attributes=attrs,
+                    thumb=thumb_path,
+                )
+            else:
                 attrs, _ = get_attributes(opath)
                 out_msg = await msg.client.send_file(
                     msg.to_id,
@@ -417,44 +431,14 @@ async def upload_a_file(
                         c, t, msg, file_name, start_time, tout, message, database
                     ),
                     attributes=attrs,
+                    thumb=thumb_path,
                 )
-            else:
-                if force_docs:
-                    attrs, _ = get_attributes(opath, force_document=True)
-                    out_msg = await msg.client.send_file(
-                        msg.to_id,
-                        file=path,
-                        parse_mode="html",
-                        caption=caption_str,
-                        reply_to=message.id,
-                        force_document=True,
-                        progress_callback=lambda c, t: progress(
-                            c, t, msg, file_name, start_time, tout, message, database
-                        ),
-                        attributes=attrs,
-                        thumb=thumb_path,
-                    )
-                else:
-                    attrs, _ = get_attributes(opath)
-                    out_msg = await msg.client.send_file(
-                        msg.to_id,
-                        file=path,
-                        parse_mode="html",
-                        caption=caption_str,
-                        reply_to=message.id,
-                        progress_callback=lambda c, t: progress(
-                            c, t, msg, file_name, start_time, tout, message, database
-                        ),
-                        attributes=attrs,
-                        thumb=thumb_path,
-                    )
     except Exception as e:
         if str(e).find("cancel") != -1:
             torlog.info("Canceled an upload lol")
-            await msg.edit(f"Failed to upload {e}", buttons=None)
         else:
             torlog.exception("In Tele Upload")
-            await msg.edit(f"Failed to upload {e}", buttons=None)
+        await msg.edit(f"Failed to upload {e}", buttons=None)
     finally:
         if queue is not None:
             await queue.put(uploader_id)

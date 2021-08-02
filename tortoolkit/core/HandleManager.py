@@ -299,27 +299,24 @@ async def handle_leech_command(e):
         is_ext = zipext[1]
 
         # Set rclone based on choice
-        if choice == "drive":
-            rclone = True
-        else:
-            rclone = False
-
+        rclone = choice == "drive"
         await conf_mes.delete()
 
-        if rclone:
-            if get_val("RCLONE_ENABLED"):
-                await check_link(e, rclone, is_zip, is_ext, conf_mes)
-            else:
-                await e.reply(
-                    "<b>DRIVE IS DISABLED BY THE ADMIN</b>", parse_mode="html"
-                )
+        if (
+            rclone
+            and get_val("RCLONE_ENABLED")
+            or not rclone
+            and get_val("LEECH_ENABLED")
+        ):
+            await check_link(e, rclone, is_zip, is_ext, conf_mes)
+        elif rclone and not get_val("RCLONE_ENABLED"):
+            await e.reply(
+                "<b>DRIVE IS DISABLED BY THE ADMIN</b>", parse_mode="html"
+            )
         else:
-            if get_val("LEECH_ENABLED"):
-                await check_link(e, rclone, is_zip, is_ext, conf_mes)
-            else:
-                await e.reply(
-                    "<b>TG LEECH IS DISABLED BY THE ADMIN</b>", parse_mode="html"
-                )
+            await e.reply(
+                "<b>TG LEECH IS DISABLED BY THE ADMIN</b>", parse_mode="html"
+            )
 
 
 async def get_leech_choice(e, timestamp):
@@ -344,9 +341,7 @@ async def get_leech_choice(e, timestamp):
     while not lis[0]:
         if (time.time() - start) >= 60:  # TIMEOUT_SEC:
 
-            if defleech == "leech":
-                return "tg"
-            elif defleech == "rclone":
+            if defleech == "rclone":
                 return "drive"
             else:
                 # just in case something goes wrong
@@ -652,8 +647,6 @@ def progress_bar(percentage):
     # percentage is on the scale of 0-1
     comp = get_val("COMPLETED_STR")
     ncomp = get_val("REMAINING_STR")
-    pr = ""
-
     if isinstance(percentage, str):
         return "NaN"
 
@@ -662,21 +655,14 @@ def progress_bar(percentage):
     except:
         percentage = 0
 
-    for i in range(1, 11):
-        if i <= int(percentage / 10):
-            pr += comp
-        else:
-            pr += ncomp
-    return pr
+    return "".join(
+        comp if i <= int(percentage / 10) else ncomp for i in range(1, 11)
+    )
 
 
 async def handle_server_command(message):
     print(type(message))
-    if isinstance(message, events.CallbackQuery.Event):
-        callbk = True
-    else:
-        callbk = False
-
+    callbk = isinstance(message, events.CallbackQuery.Event)
     try:
         # Memory
         mem = psutil.virtual_memory()
@@ -791,22 +777,18 @@ async def about_me(message):
 
     val1 = get_val("RCLONE_ENABLED")
     if val1 is not None:
-        if val1:
-            rclone = "Rclone enabled by admin."
-        else:
-            rclone = "Rclone disabled by admin."
+        rclone = "Rclone enabled by admin." if val1 else "Rclone disabled by admin."
     else:
         rclone = "N/A"
 
     val1 = get_val("LEECH_ENABLED")
-    if val1 is not None:
-        if val1:
-            leen = "Leech command enabled by admin."
-        else:
-            leen = "Leech command disabled by admin."
-    else:
+    if val1 is None:
         leen = "N/A"
 
+    elif val1:
+        leen = "Leech command enabled by admin."
+    else:
+        leen = "Leech command disabled by admin."
     diff = time.time() - uptime
     diff = Human_Format.human_readable_timedelta(diff)
 
@@ -891,9 +873,12 @@ async def clear_thumb_cmd(e):
 
 
 async def handle_user_settings_(message):
-    if not message.sender_id in get_val("ALD_USR"):
-        if not get_val("USETTINGS_IN_PRIVATE") and message.is_private:
-            return
+    if (
+        message.sender_id not in get_val("ALD_USR")
+        and not get_val("USETTINGS_IN_PRIVATE")
+        and message.is_private
+    ):
+        return
 
     await handle_user_settings(message)
 
