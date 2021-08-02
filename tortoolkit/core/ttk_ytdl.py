@@ -142,14 +142,12 @@ async def create_quality_menu(
     buttons = []
     for i in unique_formats:
 
-            # add human bytes here
+        # add human bytes here
         if i == "tiny":
             text = f"tiny [{human_readable_bytes(unique_formats[i][0])} - {human_readable_bytes(unique_formats[i][1])}] ➡️"
         else:
             text = f"{i} [{human_readable_bytes(unique_formats[i][0])} - {human_readable_bytes(unique_formats[i][1])}] ➡️"
-        cdata = (
-            f"ytdlsmenu|{i}|{message1.sender_id}|{suid}|{dest}"  # add user id
-        )
+        cdata = f"ytdlsmenu|{i}|{message1.sender_id}|{suid}|{dest}"  # add user id
         buttons.append([KeyboardButtonCallback(text, cdata.encode("UTF-8"))])
     buttons.append(
         [
@@ -455,12 +453,15 @@ async def handle_ytdl_playlist(e: MessageLike) -> None:
         # format> ytdlplaylist | quality | suid | sender_id
         suid = str(time.time()).replace(".", "")
 
-        keybr = [[
-                    KeyboardButtonCallback(
-                        text=f"{i}p All videos",
-                        data=f"ytdlplaylist|{i}|{suid}|{e.sender_id}|{choice}",
-                    )
-                ] for i in ["144", "240", "360", "480", "720", "1080", "1440", "2160"]]
+        keybr = [
+            [
+                KeyboardButtonCallback(
+                    text=f"{i}p All videos",
+                    data=f"ytdlplaylist|{i}|{suid}|{e.sender_id}|{choice}",
+                )
+            ]
+            for i in ["144", "240", "360", "480", "720", "1080", "1440", "2160"]
+        ]
 
         keybr.append(
             [

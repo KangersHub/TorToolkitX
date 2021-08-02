@@ -155,9 +155,7 @@ def create_list(par, msg):
                 msg[
                     0
                 ] += f'<input type="checkbox" checked name="filenode_{i.file_id}"> <label for="filenode_{i.file_id}">{i.name} - {human_readable_bytes(i.size)}</label>'
-            msg[
-                0
-            ] += f'<input type="hidden" value="off" name="filenode_{i.file_id}">'
+            msg[0] += f'<input type="hidden" value="off" name="filenode_{i.file_id}">'
 
             msg[0] += "</li>"
 

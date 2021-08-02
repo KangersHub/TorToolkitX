@@ -81,7 +81,9 @@ async def upload_handel(
 
         if not from_in:
             updb.register_upload(message.chat_id, message.id)
-            sup_mes = await message.get_reply_message() if user_msg is None else user_msg
+            sup_mes = (
+                await message.get_reply_message() if user_msg is None else user_msg
+            )
             if task is not None:
                 await task.set_message(message)
                 await task.set_original_message(sup_mes)
@@ -160,7 +162,9 @@ async def upload_handel(
 
             if not from_in:
                 updb.register_upload(message.chat_id, message.id)
-                sup_mes = await message.get_reply_message() if user_msg is None else user_msg
+                sup_mes = (
+                    await message.get_reply_message() if user_msg is None else user_msg
+                )
                 if task is not None:
                     await task.set_message(message)
                     await task.set_original_message(sup_mes)
@@ -205,11 +209,13 @@ async def upload_handel(
                 else:
                     await message.edit(buttons=None)
                 updb.deregister_upload(message.chat_id, message.id)
-                    # spliting file logic blah blah
+                # spliting file logic blah blah
         else:
             if not from_in:
                 updb.register_upload(message.chat_id, message.id)
-                sup_mes = await message.get_reply_message() if user_msg is None else user_msg
+                sup_mes = (
+                    await message.get_reply_message() if user_msg is None else user_msg
+                )
                 if task is not None:
                     await task.set_message(message)
                     await task.set_original_message(sup_mes)
@@ -260,9 +266,7 @@ async def upload_a_file(
             path, message, force_edit, database, thumb_path, user_msg
         )
     queue = message.client.queue
-    if database is not None and database.get_cancel_status(
-        message.chat_id, message.id
-    ):
+    if database is not None and database.get_cancel_status(message.chat_id, message.id):
         # add os remove here
         return None
     if not os.path.exists(path):

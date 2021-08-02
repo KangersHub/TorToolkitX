@@ -94,9 +94,7 @@ async def add_torrent(aria_instance, torrent_file_path):
     except Exception as e:
         return (
             False,
-            "**FAILED** \n"
-            + str(e)
-            + " \nPlease do not send SLOW links. Read /help",
+            "**FAILED** \n" + str(e) + " \nPlease do not send SLOW links. Read /help",
         )
     else:
         return True, "" + download.gid + ""

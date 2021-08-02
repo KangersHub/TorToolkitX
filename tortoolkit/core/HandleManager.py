@@ -310,13 +310,9 @@ async def handle_leech_command(e):
         ):
             await check_link(e, rclone, is_zip, is_ext, conf_mes)
         elif rclone and not get_val("RCLONE_ENABLED"):
-            await e.reply(
-                "<b>DRIVE IS DISABLED BY THE ADMIN</b>", parse_mode="html"
-            )
+            await e.reply("<b>DRIVE IS DISABLED BY THE ADMIN</b>", parse_mode="html")
         else:
-            await e.reply(
-                "<b>TG LEECH IS DISABLED BY THE ADMIN</b>", parse_mode="html"
-            )
+            await e.reply("<b>TG LEECH IS DISABLED BY THE ADMIN</b>", parse_mode="html")
 
 
 async def get_leech_choice(e, timestamp):
@@ -655,9 +651,7 @@ def progress_bar(percentage):
     except:
         percentage = 0
 
-    return "".join(
-        comp if i <= int(percentage / 10) else ncomp for i in range(1, 11)
-    )
+    return "".join(comp if i <= int(percentage / 10) else ncomp for i in range(1, 11))
 
 
 async def handle_server_command(message):
