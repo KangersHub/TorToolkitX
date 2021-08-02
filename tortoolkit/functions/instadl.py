@@ -1,11 +1,9 @@
 import asyncio
 import os
 import re
-import shutil
 
-from instaloader import Instaloader, LoginRequiredException, NodeIterator, Post, Profile
+from instaloader import Instaloader, NodeIterator, Post, Profile
 from natsort import natsorted
-from telethon.errors import FloodWaitError
 
 from ..core.thumb_manage import get_thumbnail
 
@@ -29,7 +27,7 @@ def get_caption(post: Post) -> str:
 
 async def upload_to_tg(
     message, dirname: str, post: Post, sender_id: int
-) -> None:    # pylint: disable=R0912
+) -> None:  # pylint: disable=R0912
     """uploads downloaded post from local to telegram servers"""
     pto = (".jpg", ".jpeg", ".png", ".bmp")
     vdo = (".mkv", ".mp4", ".webm")
@@ -156,6 +154,6 @@ async def _insta_post_downloader(message):
     await asyncio.sleep(2)
 
     p = r"^https:\/\/www\.instagram\.com\/(p|tv|reel)\/([A-Za-z0-9\-_]*)\/(\?igshid=[a-zA-Z0-9]*)?$"
-    match = re.search(p, omess.raw_text)
+    re.search(p, omess.raw_text)
     print(omess.raw_text)
     await message.edit("`Invalid Link that you provided`")

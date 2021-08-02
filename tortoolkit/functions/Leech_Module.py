@@ -88,11 +88,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
             if isinstance(i, types.DocumentAttributeFilename):
                 name = i.file_name
 
-        if (
-            name is None
-            or name is not None
-            and not name.lower().endswith(".torrent")
-        ):
+        if name is None or name is not None and not name.lower().endswith(".torrent"):
             await omess.reply(
                 "This is not a torrent file to leech from. Send <code>.torrent</code> file",
                 parse_mode="html",

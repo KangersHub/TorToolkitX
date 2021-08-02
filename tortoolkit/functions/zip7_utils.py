@@ -114,8 +114,8 @@ async def extract_archive(path, password=""):
         # False means that the stuff can be upload but cant be extracted as its a dir
         return False
     if str(path).endswith(
-                (".zip", "7z", "tar", "gzip2", "iso", "wim", "rar", "tar.gz", "tar.bz2")
-            ):
+        (".zip", "7z", "tar", "gzip2", "iso", "wim", "rar", "tar.gz", "tar.bz2")
+    ):
         # check userdata
         userpath = os.path.join(os.getcwd(), "userdata")
         if not os.path.exists(userpath):

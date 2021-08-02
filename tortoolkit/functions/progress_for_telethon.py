@@ -39,8 +39,7 @@ async def progress(
 
         progress = "[{0}{1}] \nP: {2}%\n".format(
             "".join(
-                get_val("COMPLETED_STR")
-                for i in range(math.floor(percentage / 10))
+                get_val("COMPLETED_STR") for i in range(math.floor(percentage / 10))
             ),
             "".join(
                 get_val("REMAINING_STR")
@@ -48,7 +47,6 @@ async def progress(
             ),
             round(percentage, 2),
         )
-
 
         tmp = progress + "{0} of {1}\nSpeed: {2}/s\nETA: {3}\nUsing engine: Telethon".format(
             human_readable_bytes(current),

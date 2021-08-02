@@ -53,8 +53,7 @@ async def progress_for_pyrogram(
 
         progress = "[{0}{1}] \nP: {2}%\n".format(
             "".join(
-                get_val("COMPLETED_STR")
-                for _ in range(math.floor(percentage / 10))
+                get_val("COMPLETED_STR") for _ in range(math.floor(percentage / 10))
             ),
             "".join(
                 get_val("REMAINING_STR")
@@ -62,7 +61,6 @@ async def progress_for_pyrogram(
             ),
             round(percentage, 2),
         )
-
 
         tmp = (
             progress

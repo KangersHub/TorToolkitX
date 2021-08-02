@@ -330,11 +330,7 @@ async def get_config():
     # this car requires to access the blob
 
     config = get_val("RCLONE_CONFIG")
-    if (
-        config is not None
-        and isinstance(config, str)
-        and os.path.exists(config)
-    ):
+    if config is not None and isinstance(config, str) and os.path.exists(config):
         return config
 
     db = var_db

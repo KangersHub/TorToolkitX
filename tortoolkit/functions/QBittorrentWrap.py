@@ -451,17 +451,19 @@ async def get_status(message, all=False):
             if i.progress == 1 and not all:
                 continue
             olen += 1
-            msg += "📥 <b>{} | {}% | {}/{}({}) | {} | {} | S:{} | L:{} | {}</b>\n\n".format(
-                i.name,
-                round(i.progress * 100, 2),
-                human_readable_bytes(i.completed),
-                human_readable_bytes(i.size),
-                human_readable_bytes(i.total_size),
-                human_readable_bytes(i.dlspeed, postfix="/s"),
-                human_readable_timedelta(i.eta),
-                i.num_seeds,
-                i.num_leechs,
-                i.state,
+            msg += (
+                "📥 <b>{} | {}% | {}/{}({}) | {} | {} | S:{} | L:{} | {}</b>\n\n".format(
+                    i.name,
+                    round(i.progress * 100, 2),
+                    human_readable_bytes(i.completed),
+                    human_readable_bytes(i.size),
+                    human_readable_bytes(i.total_size),
+                    human_readable_bytes(i.dlspeed, postfix="/s"),
+                    human_readable_timedelta(i.eta),
+                    i.num_seeds,
+                    i.num_leechs,
+                    i.state,
+                )
             )
         if msg.strip() == "":
             return "No torrents running currently...."
@@ -475,9 +477,7 @@ def progress_bar(percentage):
     # percentage is on the scale of 0-1
     comp = get_val("COMPLETED_STR")
     ncomp = get_val("REMAINING_STR")
-    return "".join(
-        comp if i <= int(percentage * 10) else ncomp for i in range(1, 11)
-    )
+    return "".join(comp if i <= int(percentage * 10) else ncomp for i in range(1, 11))
 
 
 async def deregister_torrent(hashid):
