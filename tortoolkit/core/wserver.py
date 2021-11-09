@@ -203,13 +203,13 @@ input[type="submit"]:hover, input[type="submit"]:focus{
           src="https://telegra.ph/file/69e1118355aac6913ab1b.jpg"
           alt="logo"
         />
-        <a href="https://t.me/Xcodershub"> 
+        <a href="https://t.me/KangersHub"> 
           <h2 class="name">TorToolkitX</h2>
         </a>
       </div>
       <div class="social">
-        <a href="https://github.com/Xcodershub/TortoolkitX"><i class="fab fa-github"></i></a>
-        <a href="https://t.me/Xcodershub"><i class="fab fa-telegram"></i></a>
+        <a href="https://github.com/KangersHub/TortoolkitX"><i class="fab fa-github"></i></a>
+        <a href="https://t.me/KangersHub"><i class="fab fa-telegram"></i></a>
       </div>
     </header>
     <section>
@@ -542,13 +542,13 @@ section span{
           src="https://telegra.ph/file/69e1118355aac6913ab1b.jpg"
           alt="logo"
         />
-        <a href="https://t.me/Xcodershub">
+        <a href="https://t.me/KangersHub">
           <h2 class="name">TorToolkitX</h2>
         </a>
       </div>
       <div class="social">
-        <a href="https://github.com/https://github.com/XcodersHub/TorToolkitX"><i class="fab fa-github"></i></a>
-        <a href="https://t.me/Xcodershub"><i class="fab fa-telegram"></i></a>
+        <a href="https://github.com/https://github.com/KangersHub/TorToolkitX"><i class="fab fa-github"></i></a>
+        <a href="https://t.me/KangersHub"><i class="fab fa-telegram"></i></a>
       </div>
     </header>
     <section>
@@ -721,7 +721,7 @@ async def set_priority(request):
 @routes.get("/")
 async def homepage(request):
     return web.Response(
-        text='<h1>🤗TorToolkitX webserver is Up and Running successfully🟢</h1>\n<h2>⚡See TorToolkitX on <a href="https://github.com/XcodersHub/TorToolkitX">@GitHub</a></h2>\n<h2>🥲Join XcodersHub <a href="https://t.me/XcodersHub">TG channel</a></h2>',
+        text='<h1>🤗TorToolkitX webserver is Up and Running successfully🟢</h1>\n<h2>⚡See TorToolkitX on <a href="https://github.com/KangersHub/TorToolkitX">@GitHub</a></h2>\n<h2>🥲Join KangersHub <a href="https://t.me/KangersHub">TG channel</a></h2>',
         content_type="text/html",
     )
 

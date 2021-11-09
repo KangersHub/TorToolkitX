@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__version__ = "0.2.6-heroku-master"
+__version__ = "0.2.6-Heroku-Master-Finalised."
 __author__ = "AmirulAndalib [amirulandalib@github]"
 
 import logging

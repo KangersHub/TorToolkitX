@@ -30,7 +30,7 @@ async def aria_start():
     aria2_daemon_start_cmd.append(f"--rpc-listen-port=8100")
     aria2_daemon_start_cmd.append("--rpc-max-request-size=1024M")
 
-    aria2_daemon_start_cmd.append("--conf-path=/torapp/tortoolkit/aria2/aria2.conf")
+    aria2_daemon_start_cmd.append("--conf-path=/torapp/aria2.conf")
 
     #
     torlog.debug(aria2_daemon_start_cmd)

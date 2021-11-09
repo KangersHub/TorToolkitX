@@ -1,4 +1,4 @@
-aiohttp
+aiohttp==3.7.4.post0
 anytree==2.8.0
 aria2p==0.9.1
 async-timeout==3.0.1
