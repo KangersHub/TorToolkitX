@@ -548,11 +548,11 @@ async def print_files(e, files, thash=None, path=None, size=None):
     msg_li = []
     for i in files.keys():
         link = f"https://t.me/c/{str(chat_id)[4:]}/{files[i]}"
-        if len(msg + f'🗂<a href="{link}">{i}</a>\n') > 4000:
+        if len(msg + f'🗂<b>ꜰɪʟᴇ ɴᴀᴍᴇ:</b> <a href="{link}">{i}</a>\n') > 4000:
             msg_li.append(msg)
-            msg = f'🗂<a href="{link}">{i}</a>\n'
+            msg = f'🗂<b>ꜰɪʟᴇ ɴᴀᴍᴇ:</b> <a href="{link}">{i}</a>\n'
         else:
-            msg += f'🗂<a href="{link}">{i}</a>\n'
+            msg += f'🗂<b>ꜰɪʟᴇ ɴᴀᴍᴇ:</b> <a href="{link}">{i}</a>\n'
             
     if path is not None and size is None:
         size = calculate_size(path)
