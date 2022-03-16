@@ -38,7 +38,7 @@ async def progress(
             seconds=estimated_total_time / 1000
         )
 
-        progress = "🎳[{0}{1}] = <b>{2}%</b>\n".format(
+        progress = "<b>🎳Prog:</b> [{0}{1}] <b>-</b> {2}%\n".format(
             "".join(
                 [get_val("COMPLETED_STR") for i in range(math.floor(percentage / 10))]
             ),
