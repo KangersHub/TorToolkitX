@@ -73,7 +73,7 @@ class QBTask(Status):
             human_readable_bytes(self._torrent.dlspeed, postfix="/s"),
             human_readable_bytes(self._torrent.upspeed, postfix="/s"),
         )
-        msg += "🎳Prog: {} - {}%\n".format(
+        msg += "<b>🎳Prog:</b> {} <b>-</b> {}%\n".format(
             self.progress_bar(self._torrent.progress),
             round(self._torrent.progress * 100, 2),
         )
@@ -81,13 +81,13 @@ class QBTask(Status):
             human_readable_bytes(self._torrent.downloaded),
             human_readable_bytes(self._torrent.total_size),
         )
-        msg += "<b>🕒ETA:</b> <b>{}</b>\n".format(
+        msg += "<b>🕒ETA:</b> {}\n".format(
             human_readable_timedelta(self._torrent.eta)
         )
-        msg += "<b>📉S:</b>{} <b>📈L:</b>{}\n".format(
+        msg += "<b>📉S:</b> {} <b>📈L:</b> {}\n".format(
             self._torrent.num_seeds, self._torrent.num_leechs
         )
-        msg += "<b>📡Using engine:</b> <code>qBittorrent</code>"
+        msg += "<b>📡Using Engine:</b> <code>qBittorrent</code>"
 
         return msg
 
@@ -233,17 +233,17 @@ class ARTask(Status):
         msg += "<b>♾Down:</b> {} <b>Up:</b> {}\n".format(
             self._dl_file.download_speed_string(), self._dl_file.upload_speed_string()
         )
-        msg += "🎳Prog: {} - {}%\n".format(
+        msg += "<b>🎳Prog:</b> {} <b>-</b> {}%\n".format(
             self.progress_bar(self._dl_file.progress / 100),
             round(self._dl_file.progress, 2),
         )
-        msg += "<b>👀Status:</b> {} of {}\n".format(
+        msg += "<b>👀Status:</b> {} <b>Of</b> {}\n".format(
             human_readable_bytes(self._dl_file.completed_length),
             human_readable_bytes(self._dl_file.total_length),
         )
-        msg += "<b>🕒ETA:</b> <b>{}</b>\n".format(self._dl_file.eta_string())
+        msg += "<b>🕒ETA:</b> {}\n".format(self._dl_file.eta_string())
         msg += "<b>🔗Conns:</b> {}\n".format(self._dl_file.connections)
-        msg += "<b>📡Using engine:</b> <code>Aria2 For DirectLinks</code>"
+        msg += "<b>📡Using Engine:</b> <code>Aria2 For DirectLinks</code>"
 
         return msg
 
@@ -369,7 +369,7 @@ class MegaDl(Status):
 
         msg = "<b><i>📥ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ...</i> \n\n🗂File Name:</b> {} \n".format(self._dl_info["name"])
         msg += "<b>⏱Speed:</b> {}\n".format(human_readable_bytes(self._dl_info["speed"]))
-        msg += "🎳Prog: {} - {}%\n".format(
+        msg += "<b>🎳Prog:</b> {} <b>-</b> {}%\n".format(
             self.progress_bar(
                 (self._dl_info["completed_length"] / self._dl_info["total_length"])
             ),
@@ -379,13 +379,13 @@ class MegaDl(Status):
                 2,
             ),
         )
-        msg += "<b>👀Status:</b> {} of {}\n".format(
+        msg += "<b>👀Status:</b> {} <b>Of</b> {}\n".format(
             human_readable_bytes(self._dl_info["completed_length"]),
             human_readable_bytes(self._dl_info["total_length"]),
         )
         msg += "<b>🕒ETA:</b> <b>N/A</b>\n"
 
-        msg += "<b>📡Using engine:</b> <code>Mega DL</code>"
+        msg += "<b>📡Using Engine:</b> <code>Mega DL</code>"
 
         return msg
 
