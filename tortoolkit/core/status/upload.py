@@ -85,8 +85,8 @@ class TGUploadTask(Status):
 
         except ZeroDivisionError:
             pass
-        msg += "👀Progress: {} - {}%\n".format(self.progress_bar(prg), prg * 100)
-        msg += "<b>Files:</b> {} of {} done.\n".format(
+        msg += "<b>👀Progress:</b> {} <b>-</b> {}%\n".format(self.progress_bar(prg), prg * 100)
+        msg += "<b>Files:</b> {} <b>Of</b> {} done.\n".format(
             self._uploaded_files, self._files
         )
         msg += "<b>📡Using Engine: </b> <code>TG Upload</code>\n"
@@ -142,7 +142,7 @@ class RCUploadTask(Status):
         nstr = nstr.strip()
         nstr = nstr.split(",")
         prg = nstr[1].strip("% ")
-        prg = "👀Progress:- {} - {}%".format(self.progress_bar(prg), prg)
+        prg = "<b>👀Progress:-</b> {} <b>-</b> {}%".format(self.progress_bar(prg), prg)
         progress = "<b>📉Uploaded:- {} \n{} \n⏱Speed:- {} \n🕒ETA:- {}</b> \n<b>📡Using Engine:- </b><code>RCLONE</code>".format(
             nstr[0], prg, nstr[2], nstr[3].replace("🕒ETA", "")
         )
