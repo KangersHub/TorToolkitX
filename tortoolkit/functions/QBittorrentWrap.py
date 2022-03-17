@@ -242,7 +242,7 @@ async def update_progress(
             task.cancel = True
             await task.set_inactive()
             await message.edit(
-                "Torrent canceled ```{}``` ".format(torrent.name), buttons=None
+                "𝚃𝚘𝚛𝚛𝚎𝚗𝚝 𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 ```{}``` ".format(torrent.name), buttons=None
             )
             return True
 
@@ -303,7 +303,7 @@ async def update_progress(
                     )
                     await delete_this(tor_info.hash)
                     await task.set_inactive(
-                        "Torrent <code>{}</code> errored out.".format(tor_info.name)
+                        "𝚃𝚘𝚛𝚛𝚎𝚗𝚝 <code>{}</code> errored out.".format(tor_info.name)
                     )
 
                     return False
