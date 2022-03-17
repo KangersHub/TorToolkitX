@@ -147,13 +147,13 @@ async def upload_handel(
 
             if ftype == "video":
                 todel = await message.reply(
-                    "**FILE LARGER THAN 2GB, SPLITTING NOW...**\n**Using Algo FFMPEG VIDEO SPLIT**"
+                    "**𝙵𝙸𝙻𝙴 𝙻𝙰𝚁𝙶𝙴𝚁 𝚃𝙷𝙰𝙽 𝟸𝙶𝙱, 𝚂𝙿𝙻𝙸𝚃𝚃𝙸𝙽𝙶 𝙽𝙾𝚆...**\n**𝚄𝚜𝚒𝚗𝚐 𝙰𝚕𝚐𝚘 𝙵𝙵𝙼𝙿𝙴𝙶 𝚅𝙸𝙳𝙴𝙾 𝚂𝙿𝙻𝙸𝚃**"
                 )
                 split_dir = await vids_helpers.split_file(path, get_val("TG_UP_LIMIT"))
                 await todel.delete()
             else:
                 todel = await message.reply(
-                    "**FILE LARGER THAN 2GB, SPLITTING NOW...**\n**`Using Algo FFMPEG ZIP SPLIT`**"
+                    "**𝙵𝙸𝙻𝙴 𝙻𝙰𝚁𝙶𝙴𝚁 𝚃𝙷𝙰𝙽 𝟸𝙶𝙱, 𝚂𝙿𝙻𝙸𝚃𝚃𝙸𝙽𝙶 𝙽𝙾𝚆...**\n**`𝚄𝚜𝚒𝚗𝚐 𝙰𝚕𝚐𝚘 𝙵𝙵𝙼𝙿𝙴𝙶 𝚉𝙸𝙿 𝚂𝙿𝙻𝙸𝚃`**"
                 )
                 split_dir = await zip7_utils.split_in_zip(path, get_val("TG_UP_LIMIT"))
                 await todel.delete()
@@ -210,7 +210,7 @@ async def upload_handel(
                     task.cancel = True
                     await task.set_inactive()
                     await message.edit(
-                        "{} - Canceled By user.".format(message.text), buttons=None
+                        "{} - 𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙱𝚢 𝚄𝚜𝚎𝚛.".format(message.text), buttons=None
                     )
                 else:
                     await message.edit(buttons=None)
@@ -252,7 +252,7 @@ async def upload_handel(
                     task.cancel = True
                     await task.set_inactive()
                     await message.edit(
-                        "{} - Canceled By user.".format(message.text), buttons=None
+                        "{} - 𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙱𝚢 𝚄𝚜𝚎𝚛.".format(message.text), buttons=None
                     )
                 else:
                     await message.edit(buttons=None)
@@ -322,11 +322,11 @@ async def upload_a_file(
 
     uploader_id = None
     if queue is not None:
-        torlog.info(f"𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝚏𝚘𝚛 𝚝𝚑𝚎 𝚠𝚘𝚛𝚔𝚎𝚛 𝚑𝚎𝚛𝚎 𝚏𝚘𝚛 {file_name}")
-        msg = await msg.edit(f"{msg.text}\n𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝚏𝚘𝚛 𝚊 𝚞𝚙𝚕𝚘𝚊𝚍𝚎𝚛𝚜 𝚝𝚘 𝚐𝚎𝚝 𝚏𝚛𝚎𝚎... ")
+        torlog.info(f"𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙵𝚘𝚛 𝚃𝚑𝚎 𝚆𝚘𝚛𝚔𝚎𝚛 𝙷𝚎𝚛𝚎 𝙵𝚘𝚛 {file_name}")
+        msg = await msg.edit(f"{msg.text}\n𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙵𝚘𝚛 𝙰 𝚄𝚙𝚕𝚘𝚊𝚍𝚎𝚛𝚜 𝚃𝚘 𝙶𝚎𝚝 𝙵𝚛𝚎𝚎 ")
         uploader_id = await queue.get()
         torlog.info(
-            f"𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙾𝚟𝚎𝚛 𝚏𝚘𝚛 𝚝𝚑𝚎 𝚠𝚘𝚛𝚔𝚎𝚛 𝚑𝚎𝚛𝚎 𝚏𝚘𝚛 {file_name} 𝚊𝚚𝚞𝚒𝚛𝚎𝚍 𝚠𝚘𝚛𝚔𝚎𝚛 {uploader_id}"
+            f"𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙾𝚟𝚎𝚛 𝙵𝚘𝚛 𝚃𝚑𝚎 𝚆𝚘𝚛𝚔𝚎𝚛 𝙷𝚎𝚛𝚎 𝙵𝚘𝚛 {file_name} 𝙰𝚚𝚞𝚒𝚛𝚎𝚍 𝚆𝚘𝚛𝚔𝚎𝚛 {uploader_id}"
         )
 
     out_msg = None
@@ -454,11 +454,11 @@ async def upload_a_file(
                     )
     except Exception as e:
         if str(e).find("🗑 ᴄᴀɴᴄᴇʟ") != -1:
-            torlog.info("Canceled an upload lol")
-            await msg.edit(f"Failed to upload {e}", buttons=None)
+            torlog.info("𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙰𝚗 𝚄𝚙𝚕𝚘𝚊𝚍 𝙻𝚘𝚕")
+            await msg.edit(f"𝙵𝚊𝚒𝚕𝚎𝚍 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍 {e}", buttons=None)
         else:
             torlog.exception("In Tele Upload")
-            await msg.edit(f"Failed to upload {e}", buttons=None)
+            await msg.edit(f"𝙵𝚊𝚒𝚕𝚎𝚍 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍 {e}", buttons=None)
     finally:
         if queue is not None:
             await queue.put(uploader_id)
@@ -561,18 +561,18 @@ async def upload_single_file(
                 ]
             )
             message_for_progress_display = await message.reply_text(
-                "**Starting upload of** `{}`".format(os.path.basename(path)),
+                "**𝚂𝚝𝚊𝚛𝚝𝚒𝚗𝚐 𝚄𝚙𝚕𝚘𝚊𝚍 𝙾𝚏** `{}`".format(os.path.basename(path)),
                 reply_markup=markup,
             )
 
             if queue is not None:
-                torlog.info(f"𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝚏𝚘𝚛 𝚝𝚑𝚎 𝚠𝚘𝚛𝚔𝚎𝚛 𝚑𝚎𝚛𝚎 𝚏𝚘𝚛 {𝚏𝚒𝚕𝚎_𝚗𝚊𝚖𝚎}")
+                torlog.info(f"𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙵𝚘𝚛 𝚃𝚑𝚎 𝚆𝚘𝚛𝚔𝚎𝚛 𝙷𝚎𝚛𝚎 𝙵𝚘𝚛 {𝚏𝚒𝚕𝚎_𝚗𝚊𝚖𝚎}")
                 message_for_progress_display = await message_for_progress_display.edit(
-                    f"{message_for_progress_display.text}\n𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝚏𝚘𝚛 𝚊 𝚞𝚙𝚕𝚘𝚊𝚍𝚎𝚛𝚜 𝚝𝚘 𝚐𝚎𝚝 𝚏𝚛𝚎𝚎... "
+                    f"{message_for_progress_display.text}\n𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙵𝚘𝚛 𝙰 𝚄𝚙𝚕𝚘𝚊𝚍𝚎𝚛𝚜 𝚃𝚘 𝙶𝚎𝚝 𝙵𝚛𝚎𝚎... "
                 )
                 uploader_id = await queue.get()
                 torlog.info(
-                    f"𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝚘𝚟𝚎𝚛 𝚏𝚘𝚛 𝚝𝚑𝚎 𝚠𝚘𝚛𝚔𝚎𝚛 𝚑𝚎𝚛𝚎 𝚏𝚘𝚛 {𝚏𝚒𝚕𝚎_𝚗𝚊𝚖𝚎} 𝚊𝚚𝚞𝚒𝚛𝚎𝚍 𝚠𝚘𝚛𝚔𝚎𝚛 {𝚞𝚙𝚕𝚘𝚊𝚍𝚎𝚛_𝚒𝚍}"
+                    f"𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙾𝚟𝚎𝚛 𝙵𝚘𝚛 𝚃𝚑𝚎 𝚆𝚘𝚛𝚔𝚎𝚛 𝙷𝚎𝚛𝚎 𝙵𝚘𝚛 {𝚏𝚒𝚕𝚎_𝚗𝚊𝚖𝚎} 𝙰𝚚𝚞𝚒𝚛𝚎𝚍 𝚆𝚘𝚛𝚔𝚎𝚛 {𝚞𝚙𝚕𝚘𝚊𝚍𝚎𝚛_𝚒𝚍}"
                 )
 
         if ftype == "video" and not force_docs:
@@ -728,14 +728,14 @@ async def upload_single_file(
                 os.remove(thumb)
     except Exception as e:
         if str(e).find("🗑 ᴄᴀɴᴄᴇʟ") != -1:
-            torlog.info("Canceled an upload lol")
+            torlog.info("𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙰𝚗 𝚄𝚙𝚕𝚘𝚊𝚍 𝙻𝚘𝚕")
             try:
-                await message_for_progress_display.edit(f"Failed to upload {e}")
+                await message_for_progress_display.edit(f"𝙵𝚊𝚒𝚕𝚎𝚍 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍 {e}")
             except:
                 pass
         else:
             try:
-                await message_for_progress_display.edit(f"Failed to upload {e}")
+                await message_for_progress_display.edit(f"𝙵𝚊𝚒𝚕𝚎𝚍 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍 {e}")
             except:
                 pass
             torlog.exception("IN Pyro upload")
