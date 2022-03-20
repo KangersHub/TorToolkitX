@@ -32,10 +32,10 @@ except:
         FORCE_DOCUMENTS = False
 
         # Chracter to use as a completed progress
-        COMPLETED_STR = "Ⓥ"
+        COMPLETED_STR = "⌬"
 
         # Chracter to use as a incomplete progress
-        REMAINING_STR = "○"
+        REMAINING_STR = "⬡"
 
         # DB URI for access
         DATABASE_URL = (
@@ -79,7 +79,7 @@ except:
 
         # Set this to your bot username if you want to add the username of your bot at the end of the commands like
         # /leech@TorToolkitBot so the value will be @TorToolkitBot
-        BOT_CMD_POSTFIX = "@VTorrentProBot"
+        BOT_CMD_POSTFIX = ""
 
         # Time out for the status Delete.
         STATUS_DEL_TOUT = 20
