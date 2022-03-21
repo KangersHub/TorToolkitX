@@ -72,12 +72,12 @@ async def upload_handel(
 
         try:
             message = await message.edit(
-                "{}\n\n**Found** {} **files for this Telegram Upload**".format(
+                "{}\n\n**ꜰᴏᴜɴᴅ** {} **ꜰɪʟᴇꜱ ꜰᴏʀ ᴛʜɪꜱ ᴛᴇʟᴇɢʀᴀᴍ ᴜᴘʟᴏᴀᴅ**".format(
                     message.text, len(directory_contents)
                 )
             )
         except:
-            torlog.warning("Too much folders will stop the editing of this message")
+            torlog.warning("𝚃𝚘𝚘 𝙼𝚞𝚌𝚑 𝙵𝚘𝚕𝚍𝚎𝚛𝚜 𝚆𝚒𝚕𝚕 𝚂𝚝𝚘𝚙 𝚃𝚑𝚎 𝙴𝚍𝚒𝚝𝚒𝚗𝚐 𝙾𝚏 𝚃𝚑𝚒𝚜 𝙼𝚎𝚜𝚜𝚊𝚐𝚎")
 
         if not from_in:
             updb.register_upload(message.chat_id, message.id)
@@ -119,14 +119,14 @@ async def upload_handel(
                 task.cancel = True
                 await task.set_inactive()
                 await message.edit(
-                    "{} - Canceled By user.".format(message.text), buttons=None
+                    "{} - 𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙱𝚢 𝚄𝚜𝚎𝚛.".format(message.text), buttons=None
                 )
             else:
                 await message.edit(buttons=None)
             updb.deregister_upload(message.chat_id, message.id)
 
     else:
-        logging.info("Uploading the file:- {}".format(path))
+        logging.info("𝚄𝚙𝚕𝚘𝚊𝚍𝚒𝚗𝚐 𝚃𝚑𝚎 𝙵𝚒𝚕𝚎:- {}".format(path))
         if os.path.getsize(path) > get_val("TG_UP_LIMIT"):
             # the splitted file will be considered as a single upload ;)
 
