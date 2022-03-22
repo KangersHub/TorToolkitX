@@ -165,7 +165,7 @@ async def create_quality_menu(
                 )
             ]
         )
-        await message.edit("Choose a quality/option available below.", buttons=buttons)
+        await message.edit("𝙲𝚑𝚘𝚘𝚜𝚎 𝙰 𝚀𝚞𝚊𝚕𝚒𝚝𝚢/𝙾𝚙𝚝𝚒𝚘𝚗 𝙰𝚟𝚊𝚒𝚕𝚊𝚋𝚕𝚎 𝙱𝚎𝚕𝚘𝚠.", buttons=buttons)
 
         if jsons is None:
             path = os.path.join(os.getcwd(), "userdata")
@@ -183,7 +183,7 @@ async def create_quality_menu(
 
 async def handle_ytdl_command(e: MessageLike):
     if not e.is_reply:
-        await e.reply("Reply to a youtube video link.")
+        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚃𝚘 𝙰 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 𝙻𝚒𝚗𝚔..")
         return
     msg = await e.get_reply_message()
 
@@ -195,22 +195,22 @@ async def handle_ytdl_command(e: MessageLike):
         )
 
     msg1 = await e.reply(
-        f"Processing the given link......\nChoose destination. Default destination will be chosen in {get_val('DEFAULT_TIMEOUT')}.",
+        f"⏳𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝚃𝚑𝚎 𝙶𝚒𝚟𝚎𝚗 𝙻𝚒𝚗𝚔...\n𝙲𝚑𝚘𝚘𝚜𝚎 𝙳𝚎𝚜𝚝𝚒𝚗𝚊𝚝𝚒𝚘𝚗. 𝙳𝚎𝚏𝚊𝚞𝚕𝚝 𝙳𝚎𝚜𝚝𝚒𝚗𝚊𝚝𝚒𝚘𝚗 𝚆𝚒𝚕𝚕 𝙱𝚎 𝙲𝚑𝚘𝚜𝚎𝚗 𝙸𝚗 {get_val('DEFAULT_TIMEOUT')}.",
         buttons=buts,
     )
 
     choice = await get_ytdl_choice(e, tsp)
-    msg1 = await msg1.edit("Processing the given link.......", buttons=None)
+    msg1 = await msg1.edit("⏳𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝚃𝚑𝚎 𝙶𝚒𝚟𝚎𝚗 𝙻𝚒𝚗𝚔...", buttons=None)
     await asyncio.sleep(1)
 
     if msg.text.find("http") != -1:
         res, err = await create_quality_menu(msg.text.strip(), msg1, msg, choice)
         if res is None:
             await msg1.edit(
-                f"<code>Invalid link provided.\n{err}</code>", parse_mode="html"
+                f"<code>𝙸𝚗𝚟𝚊𝚕𝚒𝚍 𝙻𝚒𝚗𝚔 𝙿𝚛𝚘𝚟𝚒𝚍𝚎𝚍.\n{err}</code>", parse_mode="html"
             )
     else:
-        await e.reply("Invalid link provided.")
+        await e.reply("𝙸𝚗𝚟𝚊𝚕𝚒𝚍 𝙻𝚒𝚗𝚔 𝙿𝚛𝚘𝚟𝚒𝚍𝚎𝚍..")
 
 
 async def handle_ytdl_callbacks(e: MessageLike):
@@ -268,13 +268,15 @@ async def handle_ytdl_callbacks(e: MessageLike):
                         )
                     ]
                 )
-                await e.edit(
-                    f"Files for quality {data[1]}, at the end it is the Video Codec. Mostly prefer the last one with you desired extension if you want streamable video. Try rest if you want.",
+                await e.edit(𝙰𝚝 𝚃𝚑𝚎 𝙴𝚗𝚍 𝙸𝚝 𝙸𝚜 𝚃𝚑𝚎 𝚅𝚒𝚍𝚎𝚘 𝙰𝚝 𝚃𝚑𝚎 𝙴𝚗𝚍 𝙸𝚝 𝙸𝚜 𝚃𝚑𝚎 𝚅𝚒𝚍𝚎𝚘 𝙲𝚘𝚍𝚎𝚌. 𝙼𝚘𝚜𝚝𝚕𝚢 𝙿𝚛𝚎𝚏𝚎𝚛 𝚃𝚑𝚎 𝙻𝚊𝚜𝚝 𝙾𝚗𝚎 𝚆𝚒𝚝𝚑 𝚈𝚘𝚞 𝙳𝚎𝚜𝚒𝚛𝚎𝚍 𝙴𝚡𝚝𝚎𝚗𝚜𝚒𝚘𝚗 𝙸𝚏 𝚈𝚘𝚞 𝚆𝚊𝚗𝚝 𝚂𝚝𝚛𝚎𝚊𝚖𝚊𝚋𝚕𝚎 𝚅𝚒𝚍𝚎𝚘. 𝚃𝚛𝚢 𝚁𝚎𝚜𝚝 𝙸𝚏 𝚈𝚘𝚞 𝚆𝚊𝚗𝚝.
+                    f"𝙵𝚒𝚕𝚎𝚜 𝙵𝚘𝚛 𝚀𝚞𝚊𝚕𝚒𝚝𝚢 {data[1]}, 𝙰𝚝 𝚃𝚑𝚎 𝙴𝚗𝚍 𝙸𝚝 𝙸𝚜 𝚃𝚑𝚎 𝚅𝚒𝚍𝚎𝚘 𝙰𝚝 𝚃𝚑𝚎 𝙴𝚗𝚍 𝙸𝚝 𝙸𝚜 𝚃𝚑𝚎 𝚅𝚒𝚍𝚎𝚘 𝙲𝚘𝚍𝚎𝚌. 𝙼𝚘𝚜𝚝𝚕𝚢 𝙿𝚛𝚎𝚏𝚎𝚛 𝚃𝚑𝚎 𝙻𝚊𝚜𝚝 𝙾𝚗𝚎 𝚆𝚒𝚝𝚑 𝚈𝚘𝚞 𝙳𝚎𝚜𝚒𝚛𝚎𝚍 𝙴𝚡𝚝𝚎𝚗𝚜𝚒𝚘𝚗 𝙸𝚏 𝚈𝚘𝚞 𝚆𝚊𝚗𝚝 𝚂𝚝𝚛𝚎𝚊𝚖𝚊𝚋𝚕𝚎 𝚅𝚒𝚍𝚎𝚘. 𝚃𝚛𝚢 𝚁𝚎𝚜𝚝 𝙸𝚏 𝚈𝚘𝚞 𝚆𝚊𝚗𝚝.",
+                    buttons=buttons,
+Codec. Mostly prefer the last one with you desired extension if you want streamable video. Try rest if you want.",
                     buttons=buttons,
                 )
 
         else:
-            await e.answer("Try again something went wrong.", alert=True)
+            await e.answer("𝚃𝚛𝚢 𝙰𝚐𝚊𝚒𝚗 𝚂𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚆𝚎𝚗𝚝 𝚆𝚛𝚘𝚗𝚐.", alert=True)
             await e.delete()
     elif data[0] == "ytdlmmenu":
         if data[1] != str(e.sender_id):
@@ -289,7 +291,7 @@ async def handle_ytdl_callbacks(e: MessageLike):
                 )
 
         else:
-            await e.answer("Try again something went wrong.", alert=True)
+            await e.answer("𝚃𝚛𝚢 𝙰𝚐𝚊𝚒𝚗 𝚂𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚆𝚎𝚗𝚝 𝚆𝚛𝚘𝚗𝚐.", alert=True)
             await e.delete()
 
 
@@ -369,9 +371,9 @@ async def handle_ytdl_file_download(e: MessageLike):
                 omess = await e.get_message()
                 omess1 = await omess.get_reply_message()
                 if "HTTP Error 429" in err:
-                    emsg = "HTTP Error 429: Too many requests try after a while."
+                    emsg = "𝙷𝚃𝚃𝙿 𝙴𝚛𝚛𝚘𝚛 𝟺𝟸𝟿: 𝚃𝚘𝚘 𝚖𝚊𝚗𝚢 𝚛𝚎𝚚𝚞𝚎𝚜𝚝𝚜 𝚝𝚛𝚢 𝚊𝚏𝚝𝚎𝚛 𝚊 𝚠𝚑𝚒𝚕𝚎."
                 else:
-                    emsg = "An error has occured trying to upload any files that are found here."
+                    emsg = "𝙰𝚗 𝚎𝚛𝚛𝚘𝚛 𝚑𝚊𝚜 𝚘𝚌𝚌𝚞𝚛𝚎𝚍 𝚝𝚛𝚢𝚒𝚗𝚐 𝚝𝚘 𝚞𝚙𝚕𝚘𝚊𝚍 𝚊𝚗𝚢 𝚏𝚒𝚕𝚎𝚜 𝚝𝚑𝚊𝚝 𝚊𝚛𝚎 𝚏𝚘𝚞𝚗𝚍 𝚑𝚎𝚛𝚎."
                 await omess.edit(emsg)
                 if omess1 is None:
                     await omess.respond(emsg)
@@ -403,7 +405,7 @@ async def handle_ytdl_file_download(e: MessageLike):
 
 async def handle_ytdl_playlist(e: MessageLike) -> None:
     if not e.is_reply:
-        await e.reply("Reply to a youtube playlist link.")
+        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚃𝚘 𝙰 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 𝙻𝚒𝚗𝚔.")
         return
     url = await e.get_reply_message()
     url = url.text.strip()
@@ -417,7 +419,7 @@ async def handle_ytdl_playlist(e: MessageLike) -> None:
         )
 
     msg = await e.reply(
-        f"Processing your Youtube Playlist download request.\nChoose destination. Default destination will be chosen in {get_val('DEFAULT_TIMEOUT')}.",
+        f"⏳𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝚢𝚘𝚞𝚛 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚛𝚎𝚚𝚞𝚎𝚜𝚝.\n𝙲𝚑𝚘𝚘𝚜𝚎 𝚍𝚎𝚜𝚝𝚒𝚗𝚊𝚝𝚒𝚘𝚗. 𝙳𝚎𝚏𝚊𝚞𝚕𝚝 𝚍𝚎𝚜𝚝𝚒𝚗𝚊𝚝𝚒𝚘𝚗 𝚠𝚒𝚕𝚕 𝚋𝚎 𝚌𝚑𝚘𝚜𝚎𝚗 𝚒𝚗 {get_val('DEFAULT_TIMEOUT')}.",
         buttons=buts,
     )
 
@@ -510,7 +512,7 @@ async def handle_ytdl_playlist(e: MessageLike) -> None:
             ]
         )
 
-        await msg.edit(f"Found {entlen} videos in the playlist.", buttons=keybr)
+        await msg.edit(f"📂ꜰᴏᴜɴᴅ {entlen} ᴠɪᴅᴇᴏꜱ ɪɴ ᴛʜᴇ ᴘʟᴀʏʟɪꜱᴛ.", buttons=keybr)
 
         path = os.path.join(os.getcwd(), "userdata")
 
@@ -543,7 +545,7 @@ async def handle_ytdl_playlist_down(e: MessageLike) -> None:
     await e.edit(buttons=None)
     path = os.path.join(os.getcwd(), "userdata", data[2] + ".json")
     if os.path.exists(path):
-        await e.answer("Processing Please wait")
+        await e.answer("⏳𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝙿𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝")
         opdir = os.path.join(os.getcwd(), "userdata", data[2])
         if not os.path.exists(opdir):
             os.mkdir(opdir)
@@ -560,13 +562,13 @@ async def handle_ytdl_playlist_down(e: MessageLike) -> None:
 
             if err and ofiles < 2:
                 await e.reply(
-                    f"Failed to download the audios <code>{err}</code>",
+                    f"𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚝𝚑𝚎 𝚊𝚞𝚍𝚒𝚘𝚜 <code>{err}</code>",
                     parse_mode="html",
                 )
             else:
                 if err:
                     await e.reply(
-                        "Some videos from this have errored in download. Uploading which are successfull."
+                        "𝚂𝚘𝚖𝚎 𝚟𝚒𝚍𝚎𝚘𝚜 𝚏𝚛𝚘𝚖 𝚝𝚑𝚒𝚜 𝚑𝚊𝚟𝚎 𝚎𝚛𝚛𝚘𝚛𝚎𝚍 𝚒𝚗 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍. 𝚄𝚙𝚕𝚘𝚊𝚍𝚒𝚗𝚐 𝚠𝚑𝚒𝚌𝚑 𝚊𝚛𝚎 𝚜𝚞𝚌𝚌𝚎𝚜𝚜𝚏𝚞𝚕𝚕."
                     )
 
                 if data[4] == "tg":
@@ -590,13 +592,13 @@ async def handle_ytdl_playlist_down(e: MessageLike) -> None:
 
             if err and ofiles < 2:
                 await e.reply(
-                    f"Failed to download the videos <code>{err}</code>",
+                    f"𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚝𝚑𝚎 𝚟𝚒𝚍𝚎𝚘𝚜 <code>{err}</code>",
                     parse_mode="html",
                 )
             else:
                 if err:
                     await e.reply(
-                        "Some videos from this have errored in download. Uploading which are successfull."
+                        "𝚂𝚘𝚖𝚎 𝚟𝚒𝚍𝚎𝚘𝚜 𝚏𝚛𝚘𝚖 𝚝𝚑𝚒𝚜 𝚑𝚊𝚟𝚎 𝚎𝚛𝚛𝚘𝚛𝚎𝚍 𝚒𝚗 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍. 𝚄𝚙𝚕𝚘𝚊𝚍𝚒𝚗𝚐 𝚠𝚑𝚒𝚌𝚑 𝚊𝚛𝚎 𝚜𝚞𝚌𝚌𝚎𝚜𝚜𝚏𝚞𝚕𝚕."
                     )
 
                 if data[4] == "tg":
