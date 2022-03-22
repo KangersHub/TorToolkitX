@@ -252,7 +252,7 @@ def add_handlers(bot: TelegramClient):
 
 async def handle_leech_command(e):
     if not e.is_reply:
-        await e.reply("𝚁𝚎𝚙𝚕𝚢 𝚝𝚘 𝚊 𝚕𝚒𝚗𝚔 𝚘𝚛 𝚖𝚊𝚐𝚗𝚎𝚝")
+        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚃𝚘 𝙰 𝙻𝚒𝚗𝚔 𝙾𝚛 𝙼𝚊𝚐𝚗𝚎𝚝")
     else:
         rclone = False
         tsp = time.time()
@@ -318,7 +318,7 @@ async def handle_leech_command(e):
                 await check_link(e, rclone, is_zip, is_ext, conf_mes)
             else:
                 await e.reply(
-                    "<b>TG LEECH IS DISABLED BY THE OWNER</b>", parse_mode="html"
+                    "<b>𝚃𝙶 𝙻𝙴𝙴𝙲𝙷 𝙸𝚂 𝙳𝙸𝚂𝙰𝙱𝙻𝙴𝙳 𝙱𝚈 𝚃𝙷𝙴 𝙾𝚆𝙽𝙴𝚁</b>", parse_mode="html"
                 )
 
 
@@ -537,7 +537,7 @@ async def callback_handler_canc(e):
         torlog.info(f"Hashid :- {hashid}")
 
         await cancel_torrent(hashid, is_aria, is_mega)
-        await e.answer("Leech has been canceled in ADMIN MODE XD ;)", alert=True)
+        await e.answer("𝙻𝚎𝚎𝚌𝚑 𝙷𝚊𝚜 𝙱𝚎𝚎𝚗 𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙸𝚗 𝙰𝙳𝙼𝙸𝙽 𝙼𝙾𝙳𝙴 𝚇𝙳 ;)", alert=True)
     else:
         await e.answer("𝙲𝚊𝚗'𝚝 𝙲𝚊𝚗𝚌𝚎𝚕 𝚘𝚝𝚑𝚎𝚛𝚜 𝙻𝚎𝚎𝚌𝚑 😡", alert=True)
 
@@ -854,13 +854,13 @@ async def about_me(message):
 async def set_thumb_cmd(e):
     thumb_msg = await e.get_reply_message()
     if thumb_msg is None:
-        await e.reply("𝚁𝚎𝚙𝚕𝚢 𝚝𝚘 𝚊 𝚙𝚑𝚘𝚝𝚘 𝚘𝚛 𝚙𝚑𝚘𝚝𝚘 𝚊𝚜 𝚊 𝚍𝚘𝚌𝚞𝚖𝚎𝚗𝚝.")
+        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚝𝚘 𝚊 𝚙𝚑𝚘𝚝𝚘 𝚘𝚛 𝚙𝚑𝚘𝚝𝚘 𝚊𝚜 𝚊 𝚍𝚘𝚌𝚞𝚖𝚎𝚗𝚝.")
         return
 
     if thumb_msg.document is not None or thumb_msg.photo is not None:
         value = await thumb_msg.download_media()
     else:
-        await e.reply("𝚁𝚎𝚙𝚕𝚢 𝚝𝚘 𝚊 𝚙𝚑𝚘𝚝𝚘 𝚘𝚛 𝚙𝚑𝚘𝚝𝚘 𝚊𝚜 𝚊 𝚍𝚘𝚌𝚞𝚖𝚎𝚗𝚝.")
+        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚝𝚘 𝚊 𝚙𝚑𝚘𝚝𝚘 𝚘𝚛 𝚙𝚑𝚘𝚝𝚘 𝚊𝚜 𝚊 𝚍𝚘𝚌𝚞𝚖𝚎𝚗𝚝.")
         return
 
     try:
