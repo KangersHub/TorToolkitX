@@ -269,8 +269,8 @@ async def handle_ytdl_callbacks(e: MessageLike):
                     ]
                 )
                 await e.edit(
-                    f"𝙵𝚒𝚕𝚎𝚜 𝙵𝚘𝚛 𝚀𝚞𝚊𝚕𝚒𝚝𝚢 {data[1]}, 𝙰𝚝 𝚃𝚑𝚎 𝙴𝚗𝚍 𝙸𝚝 𝙸𝚜 𝚃𝚑𝚎 𝚅𝚒𝚍𝚎𝚘 𝙰𝚝 𝚃𝚑𝚎 𝙴𝚗𝚍 𝙸𝚝 𝙸𝚜 𝚃𝚑𝚎 𝚅𝚒𝚍𝚎𝚘 𝙲𝚘𝚍𝚎𝚌. 𝙼𝚘𝚜𝚝𝚕𝚢 𝙿𝚛𝚎𝚏𝚎𝚛 𝚃𝚑𝚎 𝙻𝚊𝚜𝚝 𝙾𝚗𝚎 𝚆𝚒𝚝𝚑 𝚈𝚘𝚞 𝙳𝚎𝚜𝚒𝚛𝚎𝚍 𝙴𝚡𝚝𝚎𝚗𝚜𝚒𝚘𝚗 𝙸𝚏 𝚈𝚘𝚞 𝚆𝚊𝚗𝚝 𝚂𝚝𝚛𝚎𝚊𝚖𝚊𝚋𝚕𝚎 𝚅𝚒𝚍𝚎𝚘. 𝚃𝚛𝚢 𝚁𝚎𝚜𝚝 𝙸𝚏 𝚈𝚘𝚞 𝚆𝚊𝚗𝚝."
-                    buttons=buttons,
+                    f"Files for quality {data[1]}, at the end it is the Video Codec. Mostly prefer the last one with you desired extension if you want streamable video. Try rest if you want.", 
+                    buttons=buttons, 
                 )
 
         else:
