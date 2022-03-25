@@ -601,7 +601,7 @@ async def handle_pincode_cb(e):
 
 
 async def upload_document_f(message):
-    imsegd = await message.reply("⏳𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐...")
+    imsegd = await message.reply("⏱𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐...")
     imsegd = await message.client.get_messages(message.chat_id, ids=imsegd.id)
     if await is_admin(
         message.client, message.sender_id, message.chat_id, force_owner=True
@@ -613,7 +613,7 @@ async def upload_document_f(message):
             )
             # torlog.info(recvd_response)
     else:
-        await message.reply("🧑🏻‍💻Only for owner")
+        await message.reply("🧑🏻‍💻𝙾𝚗𝚕𝚢 𝙵𝚘𝚛 𝙾𝚠𝚗𝚎𝚛")
     await imsegd.delete()
 
 
@@ -644,7 +644,7 @@ async def set_password_zip(message):
 
 
 async def start_handler(event):
-    msg = "Hello This is V-Torrent Pro"
+    msg = "𝙷𝚒 𝙵𝚛𝚒𝚎𝚗𝚍𝚜👋.\n\n𝚃𝚑𝚒𝚜 𝚒𝚜 <b> ᴠ-ᴛᴏʀʀᴇɴᴛ ᴘʀᴏ</b>\n\n𝚃𝚑𝚒𝚜 𝙱𝚘𝚝 𝙰𝚗𝚢 𝚃𝚘𝚛𝚛𝚎𝚗𝚝 𝙵𝚒𝚕𝚎𝚜 𝙾𝚛 𝙼𝚊𝚐𝚗𝚎𝚝 𝙻𝚒𝚗𝚔 𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚎𝚛. 𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚈𝚘𝚞𝚛 𝙵𝚒𝚕𝚎 & 𝙴𝚗𝚓𝚘𝚢!\n\n<b>🧑🏻‍💻ᴅᴇᴠᴇʟᴏᴘᴇʀ ʙʏ:</b> @Adithya3300\n<b>💰ᴘᴏᴡᴇʀᴇᴅ ʙʏ:</b> @VijayAdithyaa"
     await event.reply(msg, parse_mode="html")
 
 
@@ -806,9 +806,9 @@ async def about_me(message):
     val1 = get_val("LEECH_ENABLED")
     if val1 is not None:
         if val1:
-            leen = "⚠️Leech command enabled."
+            leen = "⚠️𝙻𝚎𝚎𝚌𝚑 𝙲𝚘𝚖𝚖𝚊𝚗𝚍 𝙴𝚗𝚊𝚋𝚕𝚎𝚍."
         else:
-            leen = "⚠️Leech command disabled."
+            leen = "⚠️𝙻𝚎𝚎𝚌𝚑 𝙲𝚘𝚖𝚖𝚊𝚗𝚍 𝙳𝚒𝚜𝚊𝚋𝚕𝚎𝚍."
     else:
         leen = "N/A"
 
@@ -816,12 +816,12 @@ async def about_me(message):
     diff = Human_Format.human_readable_timedelta(diff)
 
     msg = (
-        "<b>Name</b>: <code>TorToolkitX-Heroku</code>\n"
+        "<b>Name</b>: <code>V-Torrent Pro</code>\n"
         f"<b>Version</b>: <code>{__version__}</code>\n"
         f"<b>Telethon Version</b>: {telever}\n"
         f"<b>Pyrogram Version</b>: {pyrover}\n"
-        "<b>Created By</b>: @Yaknight\n\n"
-        "<b>Modified By</b>: @XcodersHub\n\n"
+        "<b>Created By</b>: @VijayAdithyaa\n\n"
+        "<b>Modified By</b>: @VijayAdithyaa\n\n"
         "<u>Currents Configs:-</u>\n\n"
         f"<b>Bot Uptime:-</b> {diff}\n"
         "<b>Torrent Download Engine:-</b> <code>qBittorrent [4.3.0 fix active]</code> \n"
