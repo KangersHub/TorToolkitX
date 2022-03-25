@@ -252,7 +252,7 @@ def add_handlers(bot: TelegramClient):
 
 async def handle_leech_command(e):
     if not e.is_reply:
-        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚃𝚘 𝙰 𝙻𝚒𝚗𝚔 𝙾𝚛 𝙼𝚊𝚐𝚗𝚎𝚝")
+        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚃𝚘 𝚃𝚘𝚛𝚛𝚎𝚗𝚝 𝙵𝚒𝚕𝚎 (𝙾𝚛) 𝙼𝚊𝚐𝚗𝚎𝚝 𝙻𝚒𝚗𝚔")
     else:
         rclone = False
         tsp = time.time()
