@@ -311,7 +311,7 @@ async def handle_leech_command(e):
                 await check_link(e, rclone, is_zip, is_ext, conf_mes)
             else:
                 await e.reply(
-                    "<b>DRIVE IS DISABLED BY THE OWNER</b>", parse_mode="html"
+                    "<b>𝙳𝚁𝙸𝚅𝙴 𝙸𝚂 𝙳𝙸𝚂𝙰𝙱𝙻𝙴𝙳 𝙱𝚈 𝚃𝙷𝙴 𝙾𝚆𝙽𝙴𝚁</b>", parse_mode="html"
                 )
         else:
             if get_val("LEECH_ENABLED"):
@@ -492,7 +492,7 @@ async def handle_upcancel_cb(e):
         await e.answer("𝚄𝚙𝚕𝚘𝚊𝚍 𝚑𝚊𝚜 𝚋𝚎𝚎𝚗 𝚌𝚊𝚗𝚌𝚎𝚕𝚎𝚍 ;)", alert=True)
     elif e.sender_id in get_val("ALD_USR"):
         db.cancel_download(data[1], data[2])
-        await e.answer("UPLOAD CANCELED IN ADMIN MODE XD ;)", alert=True)
+        await e.answer("𝚄𝙿𝙻𝙾𝙰𝙳 𝙲𝙰𝙽𝙲𝙴𝙻𝙴𝙳 𝙸𝙽 𝙰𝙳𝙼𝙸𝙽 𝙼𝙾𝙳𝙴 𝚇𝙳 ;)", alert=True)
     else:
         await e.answer("𝙲𝚊𝚗'𝚝 𝙲𝚊𝚗𝚌𝚎𝚕 𝚘𝚝𝚑𝚎𝚛𝚜 𝚞𝚙𝚕𝚘𝚊𝚍 😡", alert=True)
 
@@ -601,7 +601,7 @@ async def handle_pincode_cb(e):
 
 
 async def upload_document_f(message):
-    imsegd = await message.reply("⏳𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐...")
+    imsegd = await message.reply("⏱𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐...")
     imsegd = await message.client.get_messages(message.chat_id, ids=imsegd.id)
     if await is_admin(
         message.client, message.sender_id, message.chat_id, force_owner=True
@@ -613,7 +613,7 @@ async def upload_document_f(message):
             )
             # torlog.info(recvd_response)
     else:
-        await message.reply("🧑🏻‍💻Only for owner")
+        await message.reply("🧑🏻‍💻𝙾𝚗𝚕𝚢 𝙵𝚘𝚛 𝙾𝚠𝚗𝚎𝚛")
     await imsegd.delete()
 
 
@@ -806,9 +806,9 @@ async def about_me(message):
     val1 = get_val("LEECH_ENABLED")
     if val1 is not None:
         if val1:
-            leen = "⚠️Leech command enabled."
+            leen = "⚠️𝙻𝚎𝚎𝚌𝚑 𝙲𝚘𝚖𝚖𝚊𝚗𝚍 𝙴𝚗𝚊𝚋𝚕𝚎𝚍."
         else:
-            leen = "⚠️Leech command disabled."
+            leen = "⚠️𝙻𝚎𝚎𝚌𝚑 𝙲𝚘𝚖𝚖𝚊𝚗𝚍 𝙳𝚒𝚜𝚊𝚋𝚕𝚎𝚍."
     else:
         leen = "N/A"
 
