@@ -217,7 +217,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                         omess, rdict, dl_task.hash, path=dl_path, size=ul_size
                     )
 
-                    torlog.info("⚠️𝙷𝚎𝚛𝚎 𝚊𝚛𝚎 𝚝𝚑𝚎 𝚏𝚒𝚕𝚎𝚜 𝚝𝚘 𝚋𝚎 𝚞𝚙𝚕𝚘𝚊𝚍𝚎𝚍 {}".format(rdict))
+                    torlog.info("𝙷𝚎𝚛𝚎 𝚊𝚛𝚎 𝚝𝚑𝚎 𝚏𝚒𝚕𝚎𝚜 𝚝𝚘 𝚋𝚎 𝚞𝚙𝚕𝚘𝚊𝚍𝚎𝚍 {}".format(rdict))
                     await QBittorrentWrap.delete_this(dl_task.hash)
 
                 else:
@@ -473,7 +473,7 @@ async def handle_zips(path, is_zip, rmess, split=True):
             await clear_stuff(path)
             return zip_path
         except:
-            await rmess.edit(rmess.text + "\n⚠️𝚉𝚒𝚙 𝚏𝚊𝚒𝚕𝚎𝚍. 𝙵𝚊𝚕𝚋𝚊𝚌𝚔 𝚝𝚘 𝚗𝚘𝚛𝚖𝚊𝚕.")
+            await rmess.edit(rmess.text + "\n𝚉𝚒𝚙 𝚏𝚊𝚒𝚕𝚎𝚍. 𝙵𝚊𝚕𝚋𝚊𝚌𝚔 𝚝𝚘 𝚗𝚘𝚛𝚖𝚊𝚕.")
             return False
     else:
         return path
@@ -486,7 +486,7 @@ async def handle_ext_zip(path, rmess, omess):
     if password is not None:
         password = password[1]
     start = time.time()
-    await rmess.edit(f"{rmess.text}\n\n**𝚃𝚛𝚢𝚒𝚗𝚐 𝚝𝚘 𝙴𝚡𝚝𝚛𝚊𝚌𝚝 𝚝𝚑𝚎 𝚊𝚛𝚌𝚑𝚒𝚟𝚎...**")
+    await rmess.edit(f"{rmess.text}\n\n**🤔𝚃𝚛𝚢𝚒𝚗𝚐 𝚝𝚘 𝙴𝚡𝚝𝚛𝚊𝚌𝚝 𝚝𝚑𝚎 𝚊𝚛𝚌𝚑𝚒𝚟𝚎...**")
     wrong_pwd = False
 
     while True:
