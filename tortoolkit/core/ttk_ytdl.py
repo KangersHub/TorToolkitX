@@ -161,7 +161,7 @@ async def create_quality_menu(
         buttons.append(
             [
                 KeyboardButtonCallback(
-                    "Audios »", f"ytdlsmenu|audios|{message1.sender_id}|{suid}|{dest}"
+                    "ᴀᴜᴅɪᴏꜱ »", f"ytdlsmenu|audios|{message1.sender_id}|{suid}|{dest}"
                 )
             ]
         )
@@ -264,7 +264,7 @@ async def handle_ytdl_callbacks(e: MessageLike):
                 buttons.append(
                     [
                         KeyboardButtonCallback(
-                            "«Go Back", f"ytdlmmenu|{data[2]}|{data[3]}|{data[4]}"
+                            "« ɢᴏ ʙᴀᴄᴋ", f"ytdlmmenu|{data[2]}|{data[3]}|{data[4]}"
                         )
                     ]
                 )
@@ -632,12 +632,11 @@ async def print_files(e, files):
     rmsg = await rmsg.get_reply_message()
     if rmsg is None:
         # msg += "\n<a href='tg://user?id={}'>Done<a>".format(rmsg.sender_id)
-        msg += "\n👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛᴇᴅ ꜰɪʟᴇꜱ</a>".format(e.sender_id)
+        msg += "\n👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛᴇᴅ ꜰɪʟᴇꜱ</a>\n\n🧑🏻‍💻<b>ᴘᴏᴡᴇʀᴇᴅ ʙʏ:</b> @VijayAdithyaa".format(e.sender_id)
         await e.reply(msg, parse_mode="html")
     else:
-        msg += "\n👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛᴇᴅ ꜰɪʟᴇꜱ</a>".format(rmsg.sender_id)
+        msg += "\n👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛᴇᴅ ꜰɪʟᴇꜱ</a>\n\n🧑🏻‍💻<b>ᴘᴏᴡᴇʀᴇᴅ ʙʏ:</b> @VijayAdithyaa".format(rmsg.sender_id)
         await rmsg.reply(msg, parse_mode="html")
-        msg += "\n🧑🏻‍💻<b>ᴘᴏᴡᴇʀᴇᴅ ʙʏ:</b> @VijayAdithyaa\n"
 
     if len(files) < 2:
         return
@@ -658,19 +657,19 @@ async def print_files(e, files):
         buttons = []
         if index == 0:
             nextt = f"https://t.me/c/{chat_id}/{ids[index+1]}"
-            buttons.append(KeyboardButtonUrl("Next ❯", nextt))
+            buttons.append(KeyboardButtonUrl("ɴᴇxᴛ ❯", nextt))
             nextt = f'<a href="{nextt}">Next</a>\n'
         elif index == len(msgs) - 1:
             prev = f"https://t.me/c/{chat_id}/{ids[index-1]}"
-            buttons.append(KeyboardButtonUrl("❮ Prev", prev))
+            buttons.append(KeyboardButtonUrl("❮ ᴘʀᴇᴠɪᴏᴜꜱ", prev))
             prev = f'<a href="{prev}">Prev</a>\n'
         else:
             nextt = f"https://t.me/c/{chat_id}/{ids[index+1]}"
-            buttons.append(KeyboardButtonUrl("Next ❯", nextt))
+            buttons.append(KeyboardButtonUrl("ɴᴇxᴛ ❯", nextt))
             nextt = f'<a href="{nextt}">Next</a>\n'
 
             prev = f"https://t.me/c/{chat_id}/{ids[index-1]}"
-            buttons.append(KeyboardButtonUrl("❮ Prev", prev))
+            buttons.append(KeyboardButtonUrl("❮ ᴘʀᴇᴠɪᴏᴜꜱ", prev))
             prev = f'<a href="{prev}">Prev</a>\n'
 
         try:
