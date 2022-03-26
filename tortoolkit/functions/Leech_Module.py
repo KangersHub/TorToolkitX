@@ -148,7 +148,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                     res = await rclone_driver(dl_path, rmess, omess, dl_task)
                     if res is None:
                         await msg.reply(
-                            "<b>UPLOAD TO DRIVE FAILED CHECK LOGS</b>",
+                            "<b>𝚄𝙿𝙻𝙾𝙰𝙳 𝚃𝙾 𝙳𝚁𝙸𝚅𝙴 𝙵𝙰𝙸𝙻𝙴𝙳 𝙲𝙷𝙴𝙲𝙺 𝙻𝙾𝙶𝚂</b>",
                             parse_mode="html",
                         )
                     await QBittorrentWrap.delete_this(dl_task.hash)
@@ -167,7 +167,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
 
     elif msg.raw_text is not None:
         if msg.raw_text.lower().startswith("magnet:"):
-            rmess = await omess.reply("𝚂𝚌𝚊𝚗𝚗𝚒𝚗𝚐...")
+            rmess = await omess.reply("🕵🏻𝚂𝚌𝚊𝚗𝚗𝚒𝚗𝚐...")
 
             mgt = get_magnets(msg.raw_text.strip())
             torrent_return = await QBittorrentWrap.register_torrent(
@@ -217,14 +217,14 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                         omess, rdict, dl_task.hash, path=dl_path, size=ul_size
                     )
 
-                    torlog.info("𝙷𝚎𝚛𝚎 𝚊𝚛𝚎 𝚝𝚑𝚎 𝚏𝚒𝚕𝚎𝚜 𝚝𝚘 𝚋𝚎 𝚞𝚙𝚕𝚘𝚊𝚍𝚎𝚍 {}".format(rdict))
+                    torlog.info("⚠️𝙷𝚎𝚛𝚎 𝚊𝚛𝚎 𝚝𝚑𝚎 𝚏𝚒𝚕𝚎𝚜 𝚝𝚘 𝚋𝚎 𝚞𝚙𝚕𝚘𝚊𝚍𝚎𝚍 {}".format(rdict))
                     await QBittorrentWrap.delete_this(dl_task.hash)
 
                 else:
                     res = await rclone_driver(dl_path, rmess, omess, dl_task)
                     if res is None:
                         await msg.reply(
-                            "<b>UPLOAD TO DRIVE FAILED CHECK LOGS</b>",
+                            "<b>𝚄𝙿𝙻𝙾𝙰𝙳 𝚃𝙾 𝙳𝚁𝙸𝚅𝙴 𝙵𝙰𝙸𝙻𝙴𝙳 𝙲𝙷𝙴𝙲𝙺 𝙻𝙾𝙶𝚂</b>",
                             parse_mode="html",
                         )
                     await QBittorrentWrap.delete_this(dl_task.hash)
@@ -300,7 +300,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                     res = await rclone_driver(dl_path, rmess, omess, dl_task)
                     if res is None:
                         await msg.reply(
-                            "<b>UPLOAD TO DRIVE FAILED CHECK LOGS</b>",
+                            "<b>𝚄𝙿𝙻𝙾𝙰𝙳 𝚃𝙾 𝙳𝚁𝙸𝚅𝙴 𝙵𝙰𝙸𝙻𝙴𝙳 𝙲𝙷𝙴𝙲𝙺 𝙻𝙾𝙶𝚂</b>",
                             parse_mode="html",
                         )
                     await QBittorrentWrap.delete_this(dl_task.hash)
@@ -315,7 +315,7 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
             msg.raw_text
             url = msg.raw_text
 
-            rmsg = await omess.reply("**𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝚝𝚑𝚎 𝚕𝚒𝚗𝚔...**")
+            rmsg = await omess.reply("**⏱𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝚝𝚑𝚎 𝚕𝚒𝚗𝚔...**")
 
             path = None
             re_name = None
@@ -414,12 +414,12 @@ async def check_link(msg, rclone=False, is_zip=False, extract=False, prev_msg=No
                     res = await rclone_driver(path, rmsg, omess, dl_task)
                     if res is None:
                         await msg.reply(
-                            "<b>UPLOAD TO DRIVE FAILED CHECK LOGS</b>",
+                            "<b>𝚄𝙿𝙻𝙾𝙰𝙳 𝚃𝙾 𝙳𝚁𝙸𝚅𝙴 𝙵𝙰𝙸𝙻𝙴𝙳 𝙲𝙷𝙴𝙲𝙺 𝙻𝙾𝙶𝚂</b>",
                             parse_mode="html",
                         )
             elif stat is False:
                 reason = await dl_task.get_error()
-                await rmsg.edit("𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚝𝚑𝚒𝚜 𝚏𝚒𝚕𝚎.\n" + str(reason))
+                await rmsg.edit("⚠️𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚝𝚑𝚒𝚜 𝚏𝚒𝚕𝚎.\n" + str(reason))
                 await errored_message(omess, rmsg)
 
             await clear_stuff(path)
@@ -462,18 +462,18 @@ async def handle_zips(path, is_zip, rmess, split=True):
             zip_path = await add_to_zip(path, get_val("TG_UP_LIMIT"), split)
 
             if zip_path is None:
-                await rmess.edit(rmess.text + "\n𝚉𝚒𝚙 𝚏𝚊𝚒𝚕𝚎𝚍. 𝙵𝚊𝚕𝚋𝚊𝚌𝚔 𝚝𝚘 𝚗𝚘𝚛𝚖𝚊𝚕.")
+                await rmess.edit(rmess.text + "\n⚠️𝚉𝚒𝚙 𝚏𝚊𝚒𝚕𝚎𝚍. 𝙵𝚊𝚕𝚋𝚊𝚌𝚔 𝚝𝚘 𝚗𝚘𝚛𝚖𝚊𝚕.")
                 return False
 
             if os.path.isdir(path):
                 shutil.rmtree(path)
             if os.path.isfile(path):
                 os.remove(path)
-            await rmess.edit(rmess.text + "\n\n**𝚉𝚒𝚙𝚙𝚒𝚗𝚐 𝚍𝚘𝚗𝚎. 𝙽𝚘𝚠 𝚞𝚙𝚕𝚘𝚊𝚍𝚒𝚗𝚐**")
+            await rmess.edit(rmess.text + "\n\n**⚠️𝚉𝚒𝚙𝚙𝚒𝚗𝚐 𝚍𝚘𝚗𝚎. 𝙽𝚘𝚠 𝚞𝚙𝚕𝚘𝚊𝚍𝚒𝚗𝚐**")
             await clear_stuff(path)
             return zip_path
         except:
-            await rmess.edit(rmess.text + "\n𝚉𝚒𝚙 𝚏𝚊𝚒𝚕𝚎𝚍. 𝙵𝚊𝚕𝚋𝚊𝚌𝚔 𝚝𝚘 𝚗𝚘𝚛𝚖𝚊𝚕.")
+            await rmess.edit(rmess.text + "\n⚠️𝚉𝚒𝚙 𝚏𝚊𝚒𝚕𝚎𝚍. 𝙵𝚊𝚕𝚋𝚊𝚌𝚔 𝚝𝚘 𝚗𝚘𝚛𝚖𝚊𝚕.")
             return False
     else:
         return path
@@ -495,7 +495,7 @@ async def handle_ext_zip(path, rmess, omess):
         else:
             if (time.time() - start) > 1200:
                 await rmess.edit(
-                    f"{rmess.text}\n**𝙴𝚡𝚝𝚛𝚊𝚌𝚝 𝚏𝚊𝚒𝚕𝚎𝚍 𝚊𝚜 𝚗𝚘 𝚌𝚘𝚛𝚛𝚎𝚌𝚝 𝚙𝚊𝚜𝚜𝚠𝚘𝚛𝚍 𝚠𝚊𝚜 𝚙𝚛𝚘𝚟𝚒𝚍𝚎𝚍 𝚞𝚙𝚕𝚘𝚊𝚍𝚒𝚗𝚐 𝚊𝚜 𝚒𝚝 𝚒𝚜.**"
+                    f"{rmess.text}\n**⚠️𝙴𝚡𝚝𝚛𝚊𝚌𝚝 𝚏𝚊𝚒𝚕𝚎𝚍 𝚊𝚜 𝚗𝚘 𝚌𝚘𝚛𝚛𝚎𝚌𝚝 𝚙𝚊𝚜𝚜𝚠𝚘𝚛𝚍 𝚠𝚊𝚜 𝚙𝚛𝚘𝚟𝚒𝚍𝚎𝚍 𝚞𝚙𝚕𝚘𝚊𝚍𝚒𝚗𝚐 𝚊𝚜 𝚒𝚝 𝚒𝚜.**"
                 )
                 return False
 
@@ -531,7 +531,7 @@ async def handle_ext_zip(path, rmess, omess):
 
 
 async def errored_message(e, reason):
-    msg = f"👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={e.sender_id}'>ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛᴇᴅ ꜰɪʟᴇꜱ</a> 𝚈𝚘𝚞𝚛 𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝙵𝚊𝚒𝚕𝚎𝚍.\n"
+    msg = f"<a href='tg://user?id={e.sender_id}'>ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛᴇᴅ ꜰɪʟᴇꜱ</a> ⚠️𝚈𝚘𝚞𝚛 𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝙵𝚊𝚒𝚕𝚎𝚍."
     if reason is not None:
         await reason.reply(msg, parse_mode="html")
     else:
@@ -629,7 +629,7 @@ def calculate_size(path):
             else:
                 return os.path.getsize(path)
         except:
-            torlog.warning("𝚂𝚒𝚣𝚎 𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚒𝚘𝚗 𝙵𝚊𝚒𝚕𝚎𝚍.")
+            torlog.warning("⚠️𝚂𝚒𝚣𝚎 𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚒𝚘𝚗 𝙵𝚊𝚒𝚕𝚎𝚍.")
             return 0
     else:
         return 0
