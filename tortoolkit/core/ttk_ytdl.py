@@ -183,7 +183,7 @@ async def create_quality_menu(
 
 async def handle_ytdl_command(e: MessageLike):
     if not e.is_reply:
-        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚃𝚘 𝙰 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 𝙻𝚒𝚗𝚔..")
+        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚃𝚘 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙻𝚒𝚗𝚔..")
         return
     msg = await e.get_reply_message()
 
@@ -195,12 +195,12 @@ async def handle_ytdl_command(e: MessageLike):
         )
 
     msg1 = await e.reply(
-        f"⏳𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝚃𝚑𝚎 𝙶𝚒𝚟𝚎𝚗 𝙻𝚒𝚗𝚔...\n𝙲𝚑𝚘𝚘𝚜𝚎 𝙳𝚎𝚜𝚝𝚒𝚗𝚊𝚝𝚒𝚘𝚗. 𝙳𝚎𝚏𝚊𝚞𝚕𝚝 𝙳𝚎𝚜𝚝𝚒𝚗𝚊𝚝𝚒𝚘𝚗 𝚆𝚒𝚕𝚕 𝙱𝚎 𝙲𝚑𝚘𝚜𝚎𝚗 𝙸𝚗 {get_val('DEFAULT_TIMEOUT')}.",
+        f"⏱𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝚃𝚑𝚎 𝙶𝚒𝚟𝚎𝚗 𝙻𝚒𝚗𝚔...\n𝙲𝚑𝚘𝚘𝚜𝚎 𝙳𝚎𝚜𝚝𝚒𝚗𝚊𝚝𝚒𝚘𝚗. 𝙳𝚎𝚏𝚊𝚞𝚕𝚝 𝙳𝚎𝚜𝚝𝚒𝚗𝚊𝚝𝚒𝚘𝚗 𝚆𝚒𝚕𝚕 𝙱𝚎 𝙲𝚑𝚘𝚜𝚎𝚗 𝙸𝚗 {get_val('DEFAULT_TIMEOUT')}.",
         buttons=buts,
     )
 
     choice = await get_ytdl_choice(e, tsp)
-    msg1 = await msg1.edit("⏳𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝚃𝚑𝚎 𝙶𝚒𝚟𝚎𝚗 𝙻𝚒𝚗𝚔...", buttons=None)
+    msg1 = await msg1.edit("⏱𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝚃𝚑𝚎 𝙶𝚒𝚟𝚎𝚗 𝙻𝚒𝚗𝚔...", buttons=None)
     await asyncio.sleep(1)
 
     if msg.text.find("http") != -1:
@@ -274,7 +274,7 @@ async def handle_ytdl_callbacks(e: MessageLike):
                 )
 
         else:
-            await e.answer("𝚃𝚛𝚢 𝙰𝚐𝚊𝚒𝚗 𝚂𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚆𝚎𝚗𝚝 𝚆𝚛𝚘𝚗𝚐.", alert=True)
+            await e.answer("🤔𝚃𝚛𝚢 𝙰𝚐𝚊𝚒𝚗 𝚂𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚆𝚎𝚗𝚝 𝚆𝚛𝚘𝚗𝚐.", alert=True)
             await e.delete()
     elif data[0] == "ytdlmmenu":
         if data[1] != str(e.sender_id):
@@ -289,7 +289,7 @@ async def handle_ytdl_callbacks(e: MessageLike):
                 )
 
         else:
-            await e.answer("𝚃𝚛𝚢 𝙰𝚐𝚊𝚒𝚗 𝚂𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚆𝚎𝚗𝚝 𝚆𝚛𝚘𝚗𝚐.", alert=True)
+            await e.answer("🤔𝚃𝚛𝚢 𝙰𝚐𝚊𝚒𝚗 𝚂𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚆𝚎𝚗𝚝 𝚆𝚛𝚘𝚗𝚐.", alert=True)
             await e.delete()
 
 
@@ -359,7 +359,7 @@ async def handle_ytdl_file_download(e: MessageLike):
                 else:
                     res = await rclone_driver(op_dir, await e.get_message(), e, None)
                     if res is None:
-                        torlog.error("Error in YTDL Rclone upload.")
+                        torlog.error("⚠️Error in YTDL Rclone upload.")
 
                 shutil.rmtree(op_dir)
                 os.remove(thumb_path)
@@ -369,9 +369,9 @@ async def handle_ytdl_file_download(e: MessageLike):
                 omess = await e.get_message()
                 omess1 = await omess.get_reply_message()
                 if "HTTP Error 429" in err:
-                    emsg = "𝙷𝚃𝚃𝙿 𝙴𝚛𝚛𝚘𝚛 𝟺𝟸𝟿: 𝚃𝚘𝚘 𝚖𝚊𝚗𝚢 𝚛𝚎𝚚𝚞𝚎𝚜𝚝𝚜 𝚝𝚛𝚢 𝚊𝚏𝚝𝚎𝚛 𝚊 𝚠𝚑𝚒𝚕𝚎."
+                    emsg = "⚠️𝙷𝚃𝚃𝙿 𝙴𝚛𝚛𝚘𝚛 𝟺𝟸𝟿: 𝚃𝚘𝚘 𝚖𝚊𝚗𝚢 𝚛𝚎𝚚𝚞𝚎𝚜𝚝𝚜 𝚝𝚛𝚢 𝚊𝚏𝚝𝚎𝚛 𝚊 𝚠𝚑𝚒𝚕𝚎."
                 else:
-                    emsg = "𝙰𝚗 𝚎𝚛𝚛𝚘𝚛 𝚑𝚊𝚜 𝚘𝚌𝚌𝚞𝚛𝚎𝚍 𝚝𝚛𝚢𝚒𝚗𝚐 𝚝𝚘 𝚞𝚙𝚕𝚘𝚊𝚍 𝚊𝚗𝚢 𝚏𝚒𝚕𝚎𝚜 𝚝𝚑𝚊𝚝 𝚊𝚛𝚎 𝚏𝚘𝚞𝚗𝚍 𝚑𝚎𝚛𝚎."
+                    emsg = "⚠️𝙰𝚗 𝚎𝚛𝚛𝚘𝚛 𝚑𝚊𝚜 𝚘𝚌𝚌𝚞𝚛𝚎𝚍 𝚝𝚛𝚢𝚒𝚗𝚐 𝚝𝚘 𝚞𝚙𝚕𝚘𝚊𝚍 𝚊𝚗𝚢 𝚏𝚒𝚕𝚎𝚜 𝚝𝚑𝚊𝚝 𝚊𝚛𝚎 𝚏𝚘𝚞𝚗𝚍 𝚑𝚎𝚛𝚎."
                 await omess.edit(emsg)
                 if omess1 is None:
                     await omess.respond(emsg)
@@ -403,7 +403,7 @@ async def handle_ytdl_file_download(e: MessageLike):
 
 async def handle_ytdl_playlist(e: MessageLike) -> None:
     if not e.is_reply:
-        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚃𝚘 𝙰 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 𝙻𝚒𝚗𝚔.")
+        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚃𝚘 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 𝙻𝚒𝚗𝚔.")
         return
     url = await e.get_reply_message()
     url = url.text.strip()
@@ -417,13 +417,13 @@ async def handle_ytdl_playlist(e: MessageLike) -> None:
         )
 
     msg = await e.reply(
-        f"⏳𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝚢𝚘𝚞𝚛 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚛𝚎𝚚𝚞𝚎𝚜𝚝.\n𝙲𝚑𝚘𝚘𝚜𝚎 𝚍𝚎𝚜𝚝𝚒𝚗𝚊𝚝𝚒𝚘𝚗. 𝙳𝚎𝚏𝚊𝚞𝚕𝚝 𝚍𝚎𝚜𝚝𝚒𝚗𝚊𝚝𝚒𝚘𝚗 𝚠𝚒𝚕𝚕 𝚋𝚎 𝚌𝚑𝚘𝚜𝚎𝚗 𝚒𝚗 {get_val('DEFAULT_TIMEOUT')}.",
+        f"⏱𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝚢𝚘𝚞𝚛 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚛𝚎𝚚𝚞𝚎𝚜𝚝.\n𝙲𝚑𝚘𝚘𝚜𝚎 𝚍𝚎𝚜𝚝𝚒𝚗𝚊𝚝𝚒𝚘𝚗. 𝙳𝚎𝚏𝚊𝚞𝚕𝚝 𝚍𝚎𝚜𝚝𝚒𝚗𝚊𝚝𝚒𝚘𝚗 𝚠𝚒𝚕𝚕 𝚋𝚎 𝚌𝚑𝚘𝚜𝚎𝚗 𝚒𝚗 {get_val('DEFAULT_TIMEOUT')}.",
         buttons=buts,
     )
 
     choice = await get_ytdl_choice(e, tsp)  # blocking call
     msg = await msg.edit(
-        "Processing your Youtube Playlist download request.", buttons=None
+        "⏱𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝚢𝚘𝚞𝚛 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚛𝚎𝚚𝚞𝚎𝚜𝚝.", buttons=None
     )
     await asyncio.sleep(1)
 
@@ -432,13 +432,13 @@ async def handle_ytdl_playlist(e: MessageLike) -> None:
         out, err = await asyncio.wait_for(cli_call(cmd), 300)
     except asyncio.TimeoutError:
         await msg.edit(
-            "Processing time exceeded... The playlist seem to long to be worked with 😢\n If the playlist is short and you think its error report back."
+            "⏱Processing time exceeded... The playlist seem to long to be worked with 😢\n If the playlist is short and you think its error report back."
         )
         return
 
     if err:
         await msg.edit(
-            f"Failed to load the playlist with the error:- <code>{err}</code>",
+            f"⚠️Failed to load the playlist with the error:- <code>{err}</code>",
             parse_mode="html",
         )
         return
@@ -524,7 +524,7 @@ async def handle_ytdl_playlist(e: MessageLike) -> None:
 
     except:
         await msg.edit(
-            "Failed to parse the playlist. Check log if you think its error."
+            "⚠️Failed to parse the playlist. Check log if you think its error."
         )
         torlog.exception("Playlist Parse failed")
 
@@ -543,7 +543,7 @@ async def handle_ytdl_playlist_down(e: MessageLike) -> None:
     await e.edit(buttons=None)
     path = os.path.join(os.getcwd(), "userdata", data[2] + ".json")
     if os.path.exists(path):
-        await e.answer("⏳𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝙿𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝")
+        await e.answer("⏱𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚒𝚗𝚐 𝙿𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝")
         opdir = os.path.join(os.getcwd(), "userdata", data[2])
         if not os.path.exists(opdir):
             os.mkdir(opdir)
@@ -560,7 +560,7 @@ async def handle_ytdl_playlist_down(e: MessageLike) -> None:
 
             if err and ofiles < 2:
                 await e.reply(
-                    f"𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚝𝚑𝚎 𝚊𝚞𝚍𝚒𝚘𝚜 <code>{err}</code>",
+                    f"⚠️𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚝𝚑𝚎 𝚊𝚞𝚍𝚒𝚘𝚜 <code>{err}</code>",
                     parse_mode="html",
                 )
             else:
@@ -577,7 +577,7 @@ async def handle_ytdl_playlist_down(e: MessageLike) -> None:
                 else:
                     res = await rclone_driver(opdir, await e.get_message(), e, None)
                     if res is None:
-                        torlog.error("Error in YTDL Rclone upload.")
+                        torlog.error("⚠️Error in YTDL Rclone upload.")
 
         else:
             if data[1] == "best":
@@ -590,7 +590,7 @@ async def handle_ytdl_playlist_down(e: MessageLike) -> None:
 
             if err and ofiles < 2:
                 await e.reply(
-                    f"𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚝𝚑𝚎 𝚟𝚒𝚍𝚎𝚘𝚜 <code>{err}</code>",
+                    f"⚠️𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚝𝚑𝚎 𝚟𝚒𝚍𝚎𝚘𝚜 <code>{err}</code>",
                     parse_mode="html",
                 )
             else:
@@ -607,7 +607,7 @@ async def handle_ytdl_playlist_down(e: MessageLike) -> None:
                 else:
                     res = await rclone_driver(opdir, await e.get_message(), e, None)
                     if res is None:
-                        torlog.error("Error in YTDL Rclone upload.")
+                        torlog.error("⚠️Error in YTDL Rclone upload.")
         shutil.rmtree(opdir)
         os.remove(path)
     else:
@@ -626,16 +626,16 @@ async def print_files(e, files):
 
     for i in files.keys():
         link = f"https://t.me/c/{str(chat_id)[4:]}/{files[i]}"
-        msg += f'🎞<a href="{link}">{i}</a>\n\n'
+        msg += f'<b>🎞ꜰɪʟᴇ ɴᴀᴍᴇ</b> <a href="{link}">{i}</a>\n\n'
 
     rmsg = await e.client.get_messages(e.chat_id, ids=e.message_id)
     rmsg = await rmsg.get_reply_message()
     if rmsg is None:
         # msg += "\n<a href='tg://user?id={}'>Done<a>".format(rmsg.sender_id)
-        msg += "\n<a href='tg://user?id={}'>🧔🏻‍♂ʏᴏᴜʀ ʀᴇQᴜᴇꜱᴛᴇᴅ ꜰɪʟᴇꜱ👱🏻‍♀</a>".format(e.sender_id)
+        msg += "\n👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛᴇᴅ ꜰɪʟᴇꜱ</a>".format(e.sender_id)
         await e.reply(msg, parse_mode="html")
     else:
-        msg += "\n<a href='tg://user?id={}'>🧔🏻‍♂ʏᴏᴜʀ ʀᴇQᴜᴇꜱᴛᴇᴅ ꜰɪʟᴇꜱ👱🏻‍♀</a>".format(rmsg.sender_id)
+        msg += "\n👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛᴇᴅ ꜰɪʟᴇꜱ</a>".format(rmsg.sender_id)
         await rmsg.reply(msg, parse_mode="html")
         msg += "\n🧑🏻‍💻<b>ᴘᴏᴡᴇʀᴇᴅ ʙʏ:</b> @VijayAdithyaa\n"
 
