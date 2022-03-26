@@ -626,7 +626,7 @@ async def print_files(e, files):
 
     for i in files.keys():
         link = f"https://t.me/c/{str(chat_id)[4:]}/{files[i]}"
-        msg += f'<b>🎞ꜰɪʟᴇ ɴᴀᴍᴇ</b> <a href="{link}">{i}</a>\n\n'
+        msg += f'<b>🎞ꜰɪʟᴇ ɴᴀᴍᴇ:</b> <a href="{link}">{i}</a>\n\n'
 
     rmsg = await e.client.get_messages(e.chat_id, ids=e.message_id)
     rmsg = await rmsg.get_reply_message()
