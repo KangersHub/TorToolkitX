@@ -200,7 +200,7 @@ input[type="submit"]:hover, input[type="submit"]:focus{
     <header>
       <div class="brand">
         <img
-          src="https://telegra.ph/file/69e1118355aac6913ab1b.jpg"
+          src="https://telegra.ph/file/10a0bd94cb77ca2456b0d.jpg"
           alt="logo"
         />
         <a href="https://t.me/Xcodershub"> 
@@ -343,7 +343,7 @@ code_page = """
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Torrent Code Checker</title>
-    <link rel="icon" href="https://telegra.ph/file/69e1118355aac6913ab1b.jpg" type="image/jpg"> 
+    <link rel="icon" href="https://telegra.ph/file/10a0bd94cb77ca2456b0d.jpg" type="image/jpg"> 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -539,7 +539,7 @@ section span{
     <header>
       <div class="brand">
         <img
-          src="https://telegra.ph/file/69e1118355aac6913ab1b.jpg"
+          src="https://telegra.ph/file/10a0bd94cb77ca2456b0d.jpg"
           alt="logo"
         />
         <a href="https://t.me/Xcodershub">
