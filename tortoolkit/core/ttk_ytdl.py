@@ -510,7 +510,7 @@ async def handle_ytdl_playlist(e: MessageLike) -> None:
             ]
         )
 
-        await msg.edit(f"📂ꜰᴏᴜɴᴅ {entlen} ᴠɪᴅᴇᴏꜱ ɪɴ ᴛʜᴇ ᴘʟᴀʏʟɪꜱᴛ.", buttons=keybr)
+        await msg.edit(f"🎭ꜰᴏᴜɴᴅ {entlen} ᴠɪᴅᴇᴏꜱ ɪɴ ᴛʜᴇ ᴘʟᴀʏʟɪꜱᴛ.", buttons=keybr)
 
         path = os.path.join(os.getcwd(), "userdata")
 
