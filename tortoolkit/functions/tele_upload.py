@@ -72,7 +72,7 @@ async def upload_handel(
 
         try:
             message = await message.edit(
-                "{}\n\n**📁ꜰᴏᴜɴᴅ** {} **ꜰɪʟᴇꜱ ꜰᴏʀ ᴛʜɪꜱ ᴛᴇʟᴇɢʀᴀᴍ ᴜᴘʟᴏᴀᴅ**".format(
+                "{}\n\n**🎭ꜰᴏᴜɴᴅ** {} **ꜰɪʟᴇꜱ ꜰᴏʀ ᴛʜɪꜱ ᴛᴇʟᴇɢʀᴀᴍ ᴜᴘʟᴏᴀᴅ**".format(
                     message.text, len(directory_contents)
                 )
             )
@@ -147,13 +147,13 @@ async def upload_handel(
 
             if ftype == "video":
                 todel = await message.reply(
-                    "**𝙵𝙸𝙻𝙴 𝙻𝙰𝚁𝙶𝙴𝚁 𝚃𝙷𝙰𝙽 𝟸𝙶𝙱, 𝚂𝙿𝙻𝙸𝚃𝚃𝙸𝙽𝙶 𝙽𝙾𝚆...**\n**𝚄𝚜𝚒𝚗𝚐 𝙰𝚕𝚐𝚘 𝙵𝙵𝙼𝙿𝙴𝙶 𝚅𝙸𝙳𝙴𝙾 𝚂𝙿𝙻𝙸𝚃**"
+                    "**💽𝙵𝙸𝙻𝙴 𝙻𝙰𝚁𝙶𝙴𝚁 𝚃𝙷𝙰𝙽 𝟸𝙶𝙱, 𝚂𝙿𝙻𝙸𝚃𝚃𝙸𝙽𝙶 𝙽𝙾𝚆...**\n**𝚄𝚜𝚒𝚗𝚐 𝙰𝚕𝚐𝚘 𝙵𝙵𝙼𝙿𝙴𝙶 𝚅𝙸𝙳𝙴𝙾 𝚂𝙿𝙻𝙸𝚃**"
                 )
                 split_dir = await vids_helpers.split_file(path, get_val("TG_UP_LIMIT"))
                 await todel.delete()
             else:
                 todel = await message.reply(
-                    "**𝙵𝙸𝙻𝙴 𝙻𝙰𝚁𝙶𝙴𝚁 𝚃𝙷𝙰𝙽 𝟸𝙶𝙱, 𝚂𝙿𝙻𝙸𝚃𝚃𝙸𝙽𝙶 𝙽𝙾𝚆...**\n**`𝚄𝚜𝚒𝚗𝚐 𝙰𝚕𝚐𝚘 𝙵𝙵𝙼𝙿𝙴𝙶 𝚉𝙸𝙿 𝚂𝙿𝙻𝙸𝚃`**"
+                    "**💽𝙵𝙸𝙻𝙴 𝙻𝙰𝚁𝙶𝙴𝚁 𝚃𝙷𝙰𝙽 𝟸𝙶𝙱, 𝚂𝙿𝙻𝙸𝚃𝚃𝙸𝙽𝙶 𝙽𝙾𝚆...**\n**`𝚄𝚜𝚒𝚗𝚐 𝙰𝚕𝚐𝚘 𝙵𝙵𝙼𝙿𝙴𝙶 𝚉𝙸𝙿 𝚂𝙿𝙻𝙸𝚃`**"
                 )
                 split_dir = await zip7_utils.split_in_zip(path, get_val("TG_UP_LIMIT"))
                 await todel.delete()
@@ -455,10 +455,10 @@ async def upload_a_file(
     except Exception as e:
         if str(e).find("🗑 ᴄᴀɴᴄᴇʟ") != -1:
             torlog.info("𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙰𝚗 𝚄𝚙𝚕𝚘𝚊𝚍 𝙻𝚘𝚕")
-            await msg.edit(f"𝙵𝚊𝚒𝚕𝚎𝚍 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍 {e}", buttons=None)
+            await msg.edit(f"⚠𝙵𝚊𝚒𝚕𝚎𝚍 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍 {e}", buttons=None)
         else:
             torlog.exception("In Tele Upload")
-            await msg.edit(f"𝙵𝚊𝚒𝚕𝚎𝚍 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍 {e}", buttons=None)
+            await msg.edit(f"⚠𝙵𝚊𝚒𝚕𝚎𝚍 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍 {e}", buttons=None)
     finally:
         if queue is not None:
             await queue.put(uploader_id)
@@ -561,7 +561,7 @@ async def upload_single_file(
                 ]
             )
             message_for_progress_display = await message.reply_text(
-                "**𝚂𝚝𝚊𝚛𝚝𝚒𝚗𝚐 𝚄𝚙𝚕𝚘𝚊𝚍 𝙾𝚏** `{}`".format(os.path.basename(path)),
+                "**𝚂𝚝𝚊𝚛𝚝𝚒𝚗𝚐 𝚄𝚙𝚕𝚘𝚊𝚍:** \n`{}`".format(os.path.basename(path)),
                 reply_markup=markup,
             )
 
@@ -730,12 +730,12 @@ async def upload_single_file(
         if str(e).find("🗑 ᴄᴀɴᴄᴇʟ") != -1:
             torlog.info("𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙰𝚗 𝚄𝚙𝚕𝚘𝚊𝚍 𝙻𝚘𝚕")
             try:
-                await message_for_progress_display.edit(f"𝙵𝚊𝚒𝚕𝚎𝚍 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍 {e}")
+                await message_for_progress_display.edit(f"⚠𝙵𝚊𝚒𝚕𝚎𝚍 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍 {e}")
             except:
                 pass
         else:
             try:
-                await message_for_progress_display.edit(f"𝙵𝚊𝚒𝚕𝚎𝚍 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍 {e}")
+                await message_for_progress_display.edit(f"⚠𝙵𝚊𝚒𝚕𝚎𝚍 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍 {e}")
             except:
                 pass
             torlog.exception("IN Pyro upload")
