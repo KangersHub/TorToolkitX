@@ -268,7 +268,7 @@ async def update_progress(
             if is_meta and (time.time() - meta_time) > get_val("TOR_MAX_TOUT"):
 
                 await message.edit(
-                    "𝚃𝚘𝚛𝚛𝚎𝚗𝚝 <code>{}</code> 𝚒𝚜 𝙳𝙴𝙰𝙳. [𝙼𝚎𝚝𝚊𝚍𝚊𝚝𝚊 𝙵𝚊𝚒𝚕𝚎𝚍]".format(
+                    "𝚃𝚘𝚛𝚛𝚎𝚗𝚝 <code>{}</code> 𝚒𝚜 𝚈𝚘𝚞𝚛 𝚃𝚘𝚛𝚛𝚎𝚗𝚝 𝙵𝚒𝚕𝚎 𝙾𝚛 𝙼𝚊𝚐𝚗𝚎𝚝 𝙻𝚒𝚗𝚔 𝙳𝚎𝚊𝚍 𝙲𝚑𝚊𝚗𝚐𝚎 𝚃𝚑𝚎 𝚆𝚎𝚋𝚜𝚒𝚝𝚎.".format(
                         tor_info.name
                     ),
                     buttons=None,
@@ -281,7 +281,7 @@ async def update_progress(
                 )
                 await delete_this(tor_info.hash)
                 await task.set_inactive(
-                    "𝚃𝚘𝚛𝚛𝚎𝚗𝚝 <code>{}</code> 𝚒𝚜 𝙳𝙴𝙰𝙳. [𝙼𝚎𝚝𝚊𝚍𝚊𝚝𝚊 𝙵𝚊𝚒𝚕𝚎𝚍]".format(
+                    "𝚃𝚘𝚛𝚛𝚎𝚗𝚝 <code>{}</code> 𝚒𝚜 𝚈𝚘𝚞𝚛 𝚃𝚘𝚛𝚛𝚎𝚗𝚝 𝙵𝚒𝚕𝚎 𝙾𝚛 𝙼𝚊𝚐𝚗𝚎𝚝 𝙻𝚒𝚗𝚔 𝙳𝚎𝚊𝚍 𝙲𝚑𝚊𝚗𝚐𝚎 𝚃𝚑𝚎 𝚆𝚎𝚋𝚜𝚒𝚝𝚎.".format(
                         tor_info.name
                     )
                 )
