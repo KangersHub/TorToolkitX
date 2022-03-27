@@ -103,7 +103,7 @@ class QBTask(Status):
                 self._torrent.name, datetime.now().strftime("%H:%M:%S")
             )
         elif (
-            self._torrent.state == "𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚒𝚗𝚐..."
+            self._torrent.state == "📥𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚒𝚗𝚐..."
             or self._torrent.state.lower().endswith("dl")
         ):
             # kept for past ref
