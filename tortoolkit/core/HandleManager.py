@@ -816,11 +816,11 @@ async def about_me(message):
     diff = Human_Format.human_readable_timedelta(diff)
 
     msg = (
-        "<b>Name</b>: <code>V-Torrent Pro</code>\n"
+        "<b>Name</b>: <code>ᴠ-ᴛᴏʀʀᴇɴᴛ ᴘʀᴏ</code>\n"
         f"<b>Version</b>: <code>{__version__}</code>\n"
         f"<b>Telethon Version</b>: {telever}\n"
         f"<b>Pyrogram Version</b>: {pyrover}\n"
-        "<b>Created By</b>: @VijayAdithyaa\n\n"
+        "<b>Created By</b>: @Bujjikutty123\n\n"
         "<b>Modified By</b>: @VijayAdithyaa\n\n"
         "<u>Currents Configs:-</u>\n\n"
         f"<b>Bot Uptime:-</b> {diff}\n"
