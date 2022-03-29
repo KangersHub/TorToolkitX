@@ -531,7 +531,7 @@ async def handle_ext_zip(path, rmess, omess):
 
 
 async def errored_message(e, reason):
-    msg = f"<a href='tg://user?id={e.sender_id}'>Sorry Your Download Failed."
+    msg = f"👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={e.sender_id}'>Sorry Your Download Failed.</a>"
     if reason is not None:
         await reason.reply(msg, parse_mode="html")
     else:
