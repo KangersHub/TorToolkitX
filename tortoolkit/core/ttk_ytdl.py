@@ -183,7 +183,7 @@ async def create_quality_menu(
 
 async def handle_ytdl_command(e: MessageLike):
     if not e.is_reply:
-        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚃𝚘 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙻𝚒𝚗𝚔..")
+        await e.reply("🥱𝚁𝚎𝚙𝚕𝚢 𝚃𝚘 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙻𝚒𝚗𝚔.")
         return
     msg = await e.get_reply_message()
 
@@ -632,10 +632,10 @@ async def print_files(e, files):
     rmsg = await rmsg.get_reply_message()
     if rmsg is None:
         # msg += "\n<a href='tg://user?id={}'>Done<a>".format(rmsg.sender_id)
-        msg += "👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛᴇᴅ ꜰɪʟᴇꜱ</a>\n\n🧑🏻‍💻<b>ᴘᴏᴡᴇʀᴇᴅ ʙʏ:</b> @VijayAdithyaa".format(e.sender_id)
+        msg += "👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>〠</a>\n\n🧑🏻‍💻<b>ᴘᴏᴡᴇʀᴇᴅ ʙʏ:</b> @VijayAdithyaa".format(e.sender_id)
         await e.reply(msg, parse_mode="html")
     else:
-        msg += "👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛᴇᴅ ꜰɪʟᴇꜱ</a>\n\n🧑🏻‍💻<b>ᴘᴏᴡᴇʀᴇᴅ ʙʏ:</b> @VijayAdithyaa".format(rmsg.sender_id)
+        msg += "👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>〠</a>\n\n🧑🏻‍💻<b>ᴘᴏᴡᴇʀᴇᴅ ʙʏ:</b> @VijayAdithyaa".format(rmsg.sender_id)
         await rmsg.reply(msg, parse_mode="html")
 
     if len(files) < 2:
