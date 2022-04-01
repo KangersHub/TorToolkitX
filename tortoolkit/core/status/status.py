@@ -77,14 +77,14 @@ class QBTask(Status):
             self.progress_bar(self._torrent.progress),
             round(self._torrent.progress * 100, 2),
         )
-        msg += "<b>👀Status:</b> {} <b>Of</b> {}\n".format(
+        msg += "<b>👀Status:</b> {} <b>T Size:</b> {}\n".format(
             human_readable_bytes(self._torrent.downloaded),
             human_readable_bytes(self._torrent.total_size),
         )
         msg += "<b>🕒ETA:</b> {}\n".format(
             human_readable_timedelta(self._torrent.eta)
         )
-        msg += "<b>📉S:</b> {} <b>📈L:</b> {}\n".format(
+        msg += "<b>📉S:</b> {} • <b>📈L:</b> {}\n".format(
             self._torrent.num_seeds, self._torrent.num_leechs
         )
         msg += "<b>📡Using Engine:</b> <code>qBittorrent</code>"
@@ -238,7 +238,7 @@ class ARTask(Status):
             self.progress_bar(self._dl_file.progress / 100),
             round(self._dl_file.progress, 2),
         )
-        msg += "<b>👀Status:</b> {} <b>Of</b> {}\n".format(
+        msg += "<b>👀Status:</b> {} <b>T Size:</b> {}\n".format(
             human_readable_bytes(self._dl_file.completed_length),
             human_readable_bytes(self._dl_file.total_length),
         )
@@ -380,7 +380,7 @@ class MegaDl(Status):
                 2,
             ),
         )
-        msg += "<b>👀Status:</b> {} <b>Of</b> {}\n".format(
+        msg += "<b>👀Status:</b> {} <b>T Size:</b> {}\n".format(
             human_readable_bytes(self._dl_info["completed_length"]),
             human_readable_bytes(self._dl_info["total_length"]),
         )
