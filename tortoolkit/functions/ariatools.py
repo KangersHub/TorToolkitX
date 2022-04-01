@@ -59,7 +59,7 @@ async def add_magnet(aria_instance, magnetic_link, c_file_name):
     except Exception as e:
         return (
             False,
-            "**𝙵𝙰𝙸𝙻𝙴𝙳** \n" + str(e) + " \n𝙿𝚕𝚎𝚊𝚜𝚎 𝚍𝚘 𝚗𝚘𝚝 𝚜𝚎𝚗𝚍 𝚂𝙻𝙾𝚆 𝚕𝚒𝚗𝚔𝚜. 𝚁𝚎𝚊𝚍 /help",
+            "**⚠️ 𝙵𝙰𝙸𝙻𝙴𝙳** \n" + str(e) + " \n𝙿𝚕𝚎𝚊𝚜𝚎 𝚍𝚘 𝚗𝚘𝚝 𝚜𝚎𝚗𝚍 𝚂𝙻𝙾𝚆 𝚕𝚒𝚗𝚔𝚜. 𝚁𝚎𝚊𝚍 /help",
         )
     else:
         return True, "" + download.gid + ""
@@ -69,7 +69,7 @@ async def add_torrent(aria_instance, torrent_file_path):
     if torrent_file_path is None:
         return (
             False,
-            "**𝙵𝙰𝙸𝙻𝙴𝙳** \n\n𝚜𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚠𝚛𝚘𝚗𝚐𝚒𝚗𝚐𝚜 𝚠𝚑𝚎𝚗 𝚝𝚛𝚢𝚒𝚗𝚐 𝚝𝚘 𝚊𝚍𝚍 <u>𝚃𝙾𝚁𝚁𝙴𝙽𝚃</u> 𝚏𝚒𝚕𝚎",
+            "**⚠️ 𝙵𝙰𝙸𝙻𝙴𝙳** \n\n𝚜𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚠𝚛𝚘𝚗𝚐𝚒𝚗𝚐𝚜 𝚠𝚑𝚎𝚗 𝚝𝚛𝚢𝚒𝚗𝚐 𝚝𝚘 𝚊𝚍𝚍 <u>𝚃𝙾𝚁𝚁𝙴𝙽𝚃</u> 𝚏𝚒𝚕𝚎",
         )
     if os.path.exists(torrent_file_path):
         # Add Torrent Into Queue
@@ -89,7 +89,7 @@ async def add_torrent(aria_instance, torrent_file_path):
         except Exception as e:
             return (
                 False,
-                "**𝙵𝙰𝙸𝙻𝙴𝙳** \n"
+                "**⚠️ 𝙵𝙰𝙸𝙻𝙴𝙳** \n"
                 + str(e)
                 + "𝙿𝚕𝚎𝚊𝚜𝚎 𝚍𝚘 𝚗𝚘𝚝 𝚜𝚎𝚗𝚍 𝚂𝙻𝙾𝚆 𝚕𝚒𝚗𝚔𝚜. 𝚁𝚎𝚊𝚍 /help",
             )
@@ -98,7 +98,7 @@ async def add_torrent(aria_instance, torrent_file_path):
     else:
         return (
             False,
-            "**𝙵𝙰𝙸𝙻𝙴𝙳** \n"
+            "**⚠️ 𝙵𝙰𝙸𝙻𝙴𝙳** \n"
             + str(e)
             + " \n𝙿𝚕𝚎𝚊𝚜𝚎 𝚝𝚛𝚢 𝚘𝚝𝚑𝚎𝚛 𝚜𝚘𝚞𝚛𝚌𝚎𝚜 𝚝𝚘 𝚐𝚎𝚝 𝚠𝚘𝚛𝚔𝚊𝚋𝚕𝚎 𝚕𝚒𝚗𝚔",
         )
@@ -114,7 +114,7 @@ async def add_url(aria_instance, text_url, c_file_name):
     except Exception as e:
         return (
             False,
-            "**𝙵𝙰𝙸𝙻𝙴𝙳** \n" + str(e) + " \n𝙿𝚕𝚎𝚊𝚜𝚎 𝚍𝚘 𝚗𝚘𝚝 𝚜𝚎𝚗𝚍 𝚂𝙻𝙾𝚆 𝚕𝚒𝚗𝚔𝚜. 𝚁𝚎𝚊𝚍 /help",
+            "**⚠️ 𝙵𝙰𝙸𝙻𝙴𝙳** \n" + str(e) + " \n𝙿𝚕𝚎𝚊𝚜𝚎 𝚍𝚘 𝚗𝚘𝚝 𝚜𝚎𝚗𝚍 𝚂𝙻𝙾𝚆 𝚕𝚒𝚗𝚔𝚜. 𝚁𝚎𝚊𝚍 /help",
         )
     else:
         return True, "" + download.gid + ""
