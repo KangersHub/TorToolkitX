@@ -298,7 +298,6 @@ async def update_progress(
                         buttons=None,
                         parse_mode="html",
                     )
-                    msg = f"<a href='tg://user?id={e.sender_id}'> ؙ </a>"
                     torlog.error(
                         "𝙰𝚗 𝚝𝚘𝚛𝚛𝚎𝚗𝚝 𝚑𝚊𝚜 𝚎𝚛𝚛𝚘𝚛 𝚌𝚕𝚎𝚊𝚛𝚒𝚗𝚐 𝚝𝚑𝚊𝚝 𝚝𝚘𝚛𝚛𝚎𝚗𝚝 𝚗𝚘𝚠. 𝚃𝚘𝚛𝚛𝚎𝚗𝚝:- {} - {}".format(
                             tor_info.hash, tor_info.name
@@ -308,7 +307,6 @@ async def update_progress(
                     await task.set_inactive(
                         "<b>🗂ꜰɪʟᴇ ɴᴀᴍᴇ:</b> <code>{}</code>\n\n🧑🏻‍🔧<b>ᴘʀᴏʙʟᴇᴍ:</b> 𝙴𝚛𝚛𝚘𝚛𝚎𝚍 𝙾𝚞𝚝.".format(tor_info.name)
                     )
-                    msg = f"<a href='tg://user?id={e.sender_id}'> ؙ </a>"
 
                     return False
 
