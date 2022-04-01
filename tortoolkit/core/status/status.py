@@ -99,7 +99,7 @@ class QBTask(Status):
             )
         # meta stage
         elif self._torrent.state == "metaDL":
-            return "𝙶𝚎𝚝𝚝𝚒𝚗𝚐 𝙼𝚎𝚝𝚊𝚍𝚊𝚝𝚊 𝙵𝚘𝚛 {} - {}".format(
+            return "<b>🗂ꜰɪʟᴇ ɴᴀᴍᴇ:</b> {} \n\n<b>🕤ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ᴛɪᴍᴇ:</b> {} \n\n🧑🏻‍🔧<b>ꜰᴜɴᴄᴛɪᴏɴ:</b> 𝙶𝚎𝚝𝚝𝚒𝚗𝚐 𝙼𝚎𝚝𝚊𝚍𝚊𝚝𝚊".format(
                 self._torrent.name, datetime.now().strftime("%H:%M:%S")
             )
         elif (
