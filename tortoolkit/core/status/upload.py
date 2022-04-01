@@ -86,7 +86,7 @@ class TGUploadTask(Status):
         except ZeroDivisionError:
             pass
         msg += "<b>👀Progress:</b> {} <b>-</b> {}%\n".format(self.progress_bar(prg), prg * 100)
-        msg += "<b>Files:</b> {} <b>Of</b> {} done.\n".format(
+        msg += "<b>Files:</b> {} <b>T Size:</b> {} done.\n".format(
             self._uploaded_files, self._files
         )
         msg += "<b>📡Using Engine: </b> <code>TG Upload</code>\n"
