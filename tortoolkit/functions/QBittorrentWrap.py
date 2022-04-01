@@ -242,7 +242,7 @@ async def update_progress(
             task.cancel = True
             await task.set_inactive()
             await message.edit(
-                "𝚃𝚘𝚛𝚛𝚎𝚗𝚝 𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 ```{}``` ".format(torrent.name), buttons=None
+                "<b>🗂ꜰɪʟᴇ ɴᴀᴍᴇ:</b> ```{}``` \n\n🧑🏻‍🔧ᴘʀᴏʙʟᴇᴍ: 𝚈𝚘𝚞𝚛 𝚃𝚘𝚛𝚛𝚎𝚗𝚝 𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚈𝚘𝚞 𝙲𝚊𝚗𝚌𝚎𝚕𝚕𝚎𝚍".format(torrent.name), buttons=None
             )
             return True
 
@@ -271,9 +271,9 @@ async def update_progress(
                     "<b>🗂ꜰɪʟᴇ ɴᴀᴍᴇ:</b> <code>{}</code>\n\n🧑🏻‍🔧<b>ᴘʀᴏʙʟᴇᴍ:</b> 𝚈𝚘𝚞𝚛 𝚃𝚘𝚛𝚛𝚎𝚗𝚝 𝙵𝚒𝚕𝚎 𝙾𝚛 𝙼𝚊𝚐𝚗𝚎𝚝 𝙻𝚒𝚗𝚔 𝙸𝚜 𝙳𝚎𝚊𝚍 [𝙼𝚎𝚝𝚊𝚍𝚊𝚝𝚊 𝙵𝚊𝚒𝚕𝚎𝚍]".format(
                         tor_info.name
                     ),
-                    msg = f"<a href='tg://user?id={e.sender_id}'> ؙ </a>"
                     buttons=None,
                     parse_mode="html",
+                    msg = f"<a href='tg://user?id={e.sender_id}'> ؙ </a>"
                 )
                 torlog.error(
                     "𝙰𝚗 𝚝𝚘𝚛𝚛𝚎𝚗𝚝 𝚑𝚊𝚜 𝚎𝚛𝚛𝚘𝚛 𝚌𝚕𝚎𝚊𝚛𝚒𝚗𝚐 𝚝𝚑𝚊𝚝 𝚝𝚘𝚛𝚛𝚎𝚗𝚝 𝚗𝚘𝚠. 𝚃𝚘𝚛𝚛𝚎𝚗𝚝:- {} - {}".format(
