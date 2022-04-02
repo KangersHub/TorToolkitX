@@ -119,7 +119,7 @@ async def upload_handel(
                 task.cancel = True
                 await task.set_inactive()
                 await message.edit(
-                    "<b>🗂ꜰɪʟᴇ ɴᴀᴍᴇ:</b> {} \n\n🧑🏻‍🔧<b>ꜰᴜɴᴄᴛɪᴏɴ:</b> 𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙱𝚢 𝚄𝚜𝚎𝚛".format(message.text), buttons=None
+                    "**🗂ꜰɪʟᴇ ɴᴀᴍᴇ:** {} \n\n🧑🏻‍🔧**ꜰᴜɴᴄᴛɪᴏɴ:** 𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙱𝚢 𝚄𝚜𝚎𝚛".format(message.text), buttons=None
                 )
             else:
                 await message.edit(buttons=None)
@@ -210,7 +210,7 @@ async def upload_handel(
                     task.cancel = True
                     await task.set_inactive()
                     await message.edit(
-                        "<b>🗂ꜰɪʟᴇ ɴᴀᴍᴇ:</b> {} \n\n🧑🏻‍🔧<b>ꜰᴜɴᴄᴛɪᴏɴ:</b> 𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙱𝚢 𝚄𝚜𝚎𝚛".format(message.text), buttons=None
+                        "**🗂ꜰɪʟᴇ ɴᴀᴍᴇ:** {} \n\n🧑🏻‍🔧**ꜰᴜɴᴄᴛɪᴏɴ:** 𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙱𝚢 𝚄𝚜𝚎𝚛".format(message.text), buttons=None
                     )
                 else:
                     await message.edit(buttons=None)
@@ -252,7 +252,7 @@ async def upload_handel(
                     task.cancel = True
                     await task.set_inactive()
                     await message.edit(
-                        "<b>🗂ꜰɪʟᴇ ɴᴀᴍᴇ:</b> {} \n\n🧑🏻‍🔧<b>ꜰᴜɴᴄᴛɪᴏɴ:</b> 𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙱𝚢 𝚄𝚜𝚎𝚛".format(message.text), buttons=None
+                        "**🗂ꜰɪʟᴇ ɴᴀᴍᴇ:** {} \n\n🧑🏻‍🔧**ꜰᴜɴᴄᴛɪᴏɴ:** 𝙲𝚊𝚗𝚌𝚎𝚕𝚎𝚍 𝙱𝚢 𝚄𝚜𝚎𝚛".format(message.text), buttons=None
                     )
                 else:
                     await message.edit(buttons=None)
@@ -315,7 +315,7 @@ async def upload_a_file(
             message.chat_id, message.id, user_msg.sender_id
         )
         buts = [KeyboardButtonCallback(" 🗑 ᴄᴀɴᴄᴇʟ ᴛᴏ ᴜᴘʟᴏᴀᴅ", data.encode("UTF-8"))]
-        msg = await message.reply("**📤__ᴜᴘʟᴏᴀᴅɪɴɢ...__** `\n🗂<b>File Name:</b> {}`".format(file_name), buttons=buts)
+        msg = await message.reply("**📤__ᴜᴘʟᴏᴀᴅɪɴɢ...__** `\n🗂**File Name:** {}`".format(file_name), buttons=buts)
 
     else:
         msg = message
@@ -323,7 +323,7 @@ async def upload_a_file(
     uploader_id = None
     if queue is not None:
         torlog.info(f"𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙵𝚘𝚛 𝚃𝚑𝚎 𝚆𝚘𝚛𝚔𝚎𝚛 𝙷𝚎𝚛𝚎 𝙵𝚘𝚛 {file_name}")
-        msg = await msg.edit(f"{msg.text}\n\n🥳𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙵𝚘𝚛 𝙰 𝚄𝚙𝚕𝚘𝚊𝚍𝚎𝚛𝚜 𝚃𝚘 𝙶𝚎𝚝 𝙵𝚛𝚎𝚎 ")
+        msg = await msg.edit(f"{msg.text} 𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙵𝚘𝚛 𝙰 𝚄𝚙𝚕𝚘𝚊𝚍𝚎𝚛𝚜 𝚃𝚘 𝙶𝚎𝚝 𝙵𝚛𝚎𝚎.")
         uploader_id = await queue.get()
         torlog.info(
             f"𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙾𝚟𝚎𝚛 𝙵𝚘𝚛 𝚃𝚑𝚎 𝚆𝚘𝚛𝚔𝚎𝚛 𝙷𝚎𝚛𝚎 𝙵𝚘𝚛 {file_name} 𝙰𝚚𝚞𝚒𝚛𝚎𝚍 𝚆𝚘𝚛𝚔𝚎𝚛 {uploader_id}"
@@ -561,14 +561,14 @@ async def upload_single_file(
                 ]
             )
             message_for_progress_display = await message.reply_text(
-                "<b>🗂ꜰɪʟᴇ ɴᴀᴍᴇ:</b> {} \n\n<b>🧑🏻‍🔧ꜰᴜɴᴄᴛɪᴏɴ:</b> 𝚂𝚝𝚊𝚛𝚝𝚒𝚗𝚐 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍".format(os.path.basename(path)),
+                "**🗂ꜰɪʟᴇ ɴᴀᴍᴇ:** {} \n\n**🧑🏻‍🔧ꜰᴜɴᴄᴛɪᴏɴ:** 𝚂𝚝𝚊𝚛𝚝𝚒𝚗𝚐 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍".format(os.path.basename(path)),
                 reply_markup=markup,
             )
 
             if queue is not None:
                 torlog.info(f"𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙵𝚘𝚛 𝚃𝚑𝚎 𝚆𝚘𝚛𝚔𝚎𝚛 𝙷𝚎𝚛𝚎 𝙵𝚘𝚛 {𝚏𝚒𝚕𝚎_𝚗𝚊𝚖𝚎}")
                 message_for_progress_display = await message_for_progress_display.edit(
-                    f"{message_for_progress_display.text}\n\n🥳ᴡᴀɪᴛɪɴɢ ꜰᴏʀ ᴀ ᴜᴘʟᴏᴀᴅᴇʀꜱ ᴛᴏ ɢᴇᴛ ꜰʀᴇᴇ"
+                    f"{message_for_progress_display.text} 𝚆𝚊𝚒𝚝𝚒𝚗𝚐 𝙵𝚘𝚛 𝙰 𝚄𝚙𝚕𝚘𝚊𝚍𝚎𝚛𝚜 𝚃𝚘 𝙶𝚎𝚝 𝙵𝚛𝚎𝚎."
                 )
                 uploader_id = await queue.get()
                 torlog.info(
