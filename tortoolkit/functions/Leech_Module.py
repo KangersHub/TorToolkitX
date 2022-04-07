@@ -469,11 +469,11 @@ async def handle_zips(path, is_zip, rmess, split=True):
                 shutil.rmtree(path)
             if os.path.isfile(path):
                 os.remove(path)
-            await rmess.edit(rmess.text + "\n\n**⚠️𝚉𝚒𝚙𝚙𝚒𝚗𝚐 𝚍𝚘𝚗𝚎. 𝙽𝚘𝚠 𝚞𝚙𝚕𝚘𝚊𝚍𝚒𝚗𝚐**")
+            await rmess.edit(rmess.text + "\n\n**📁ꜰɪʟᴇ ᴛʏᴘᴇ:** Zipping Done.Now Uploading")
             await clear_stuff(path)
             return zip_path
         except:
-            await rmess.edit(rmess.text + "\n𝚉𝚒𝚙 𝚏𝚊𝚒𝚕𝚎𝚍. 𝙵𝚊𝚕𝚋𝚊𝚌𝚔 𝚝𝚘 𝚗𝚘𝚛𝚖𝚊𝚕.")
+            await rmess.edit(rmess.text + "\n⚠️𝚉𝚒𝚙 𝚏𝚊𝚒𝚕𝚎𝚍. 𝙵𝚊𝚕𝚋𝚊𝚌𝚔 𝚝𝚘 𝚗𝚘𝚛𝚖𝚊𝚕.")
             return False
     else:
         return path
