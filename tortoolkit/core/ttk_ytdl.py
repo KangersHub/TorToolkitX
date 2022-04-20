@@ -632,10 +632,10 @@ async def print_files(e, files):
     rmsg = await rmsg.get_reply_message()
     if rmsg is None:
         # msg += "\n<a href='tg://user?id={}'>Done<a>".format(rmsg.sender_id)
-        msg += "👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>〠</a>\n\n🧑🏻‍💻<b>ᴘᴏᴡᴇʀᴇᴅ ʙʏ:</b> @VijayAdithyaa".format(e.sender_id)
+        msg += "👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>〠</a>\n\n🧑🏻‍💻<b>ᴅᴇᴠᴇʟᴏᴘᴇʀ ʙʏ:</b> @Hey_Adithya".format(e.sender_id)
         await e.reply(msg, parse_mode="html")
     else:
-        msg += "👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>〠</a>\n\n🧑🏻‍💻<b>ᴘᴏᴡᴇʀᴇᴅ ʙʏ:</b> @VijayAdithyaa".format(rmsg.sender_id)
+        msg += "👱🏻‍♀<b>ᴜꜱᴇʀ ɪᴅ:</b> <a href='tg://user?id={}'>〠</a>\n\n🧑🏻‍💻<b>ᴅᴇᴠᴇʟᴏᴘᴇʀ ʙʏ:</b> @Hey_Adithya".format(rmsg.sender_id)
         await rmsg.reply(msg, parse_mode="html")
 
     if len(files) < 2:
