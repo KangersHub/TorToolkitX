@@ -561,7 +561,7 @@ async def upload_single_file(
                 ]
             )
             message_for_progress_display = await message.reply_text(
-                "🗂**ꜰɪʟᴇ ɴᴀᴍᴇ:** {} \n\n🧑🏻‍🔧**ꜰᴜɴᴄᴛɪᴏɴ:** 𝚂𝚝𝚊𝚛𝚝𝚒𝚗𝚐 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍".format(os.path.basename(path)),
+                "🗂**ꜰɪʟᴇ ɴᴀᴍᴇ:** `{}`\n\n🧑🏻‍🔧**ꜰᴜɴᴄᴛɪᴏɴ:** 𝚂𝚝𝚊𝚛𝚝𝚒𝚗𝚐 𝚃𝚘 𝚄𝚙𝚕𝚘𝚊𝚍".format(os.path.basename(path)),
                 reply_markup=markup,
             )
 
