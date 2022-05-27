@@ -1,10 +1,8 @@
-# TorToolkit Telegram
+# ᴠ-ᴛᴏʀʀᴇɴᴛ ʙᴏᴛ
 So basically Tortoolkit is aimed to be the most versatile torrent leecher and youtube-dl bot for telegram. This bot is highly customizable and to customize this bot you don't need to restart the bot every time. 
 The bot gets started with minimum variables and others can be set as and when needed using the /settings.
 
-## Use [Alpha](https://github.com/XcodersHub/TorToolkitX/tree/alpha) branch if you want to try latest features.
-
-## For any help join this:- [Xcodershub](https://t.me/XcodersHubChat)
+## For any help join this:- [✗³ 𝙲𝚘𝚍𝚒𝚗𝚐](https://t.me/VijayAdithyaa)
 
 ## Whats new
 - MegaDL added
@@ -14,7 +12,7 @@ The bot gets started with minimum variables and others can be set as and when ne
 
 Table of Content
 - [FEATURES](#features)
-- [TEST THE BOT (DEMO)](https://t.me/TorToolKit)
+- [TEST THE BOT (DEMO)](https://t.me/VTorrentProBot)
 - [DEPLOYMENT METHODS](#deployment)
   - [Heroku](#heroku)
   - [Zeet](#zeet)
