@@ -563,7 +563,7 @@ async def print_files(e, files, thash=None, path=None, size=None):
         transfer[0] += size
         size = human_readable_bytes(size)
         msg += f"\n💽<b>ᴜᴘʟᴏᴀᴅᴇᴅ ꜱɪᴢᴇ:</b> {str(size)}\n"
-        msg += f"\n🧑🏻‍💻<b>ᴅᴇᴠᴇʟᴏᴘᴇʀ ʙʏ:</b> @Hey_Adithya\n"
+        msg += f"\n🧑🏻‍💻<b>ᴅᴇᴠᴇʟᴏᴘᴇʀ ʙʏ:</b> @X³Coding\n"
 
     for i in msg_li:
         await e.reply(i, parse_mode="html")
