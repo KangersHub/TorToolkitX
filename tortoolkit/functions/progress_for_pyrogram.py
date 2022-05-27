@@ -53,7 +53,7 @@ async def progress_for_pyrogram(
         elapsed_time = human_readable_timedelta(elapsed_time)
         estimated_total_time = human_readable_timedelta(estimated_total_time)
 
-        progress = "<b>🎳Prog:</b> [{0}{1}] <b>-</b> {2}%\n".format(
+        progress = "**🎳Prog:** [{0}{1}] **-** {2}%\n".format(
             "".join(
                 [get_val("COMPLETED_STR") for _ in range(math.floor(percentage / 10))]
             ),
@@ -68,7 +68,7 @@ async def progress_for_pyrogram(
 
         tmp = (
             progress
-            + "👀<b>Status:</b> {0} <b>T Size:</b> {1}\n⏱<b>Speed:</b> {2}/s\n<b>🕒ETA:</b> {3}\n<b>📡Using Engine:</b> Pyrogram".format(
+            + "👀**Status:** {0} **T Size:** {1}\n⏱**Speed:** {2}/s\n**🕒ETA:** {3}\n**📡Using Engine:** Pyrogram".format(
                 human_readable_bytes(current),
                 human_readable_bytes(total),
                 human_readable_bytes(speed),
@@ -78,12 +78,12 @@ async def progress_for_pyrogram(
         try:
             if not message.photo:
                 await message.edit_text(
-                    text="**📤__ᴜᴘʟᴏᴀᴅɪɴɢ...__** \n\n🗂<b>File Name:</b> {} \n{}".format(ud_type, tmp),
+                    text="**📤__ᴜᴘʟᴏᴀᴅɪɴɢ...__** \n\n🗂**File Name:** {} \n{}".format(ud_type, tmp),
                     reply_markup=markup,
                 )
             else:
                 await message.edit_caption(
-                    caption="**📤__ᴜᴘʟᴏᴀᴅɪɴɢ...__** \n\n🗂<b>File Name:</b> {} \n{}".format(ud_type, tmp),
+                    caption="**📤__ᴜᴘʟᴏᴀᴅɪɴɢ...__** \n\n🗂**File Name:** {} \n{}".format(ud_type, tmp),
                     reply_markup=markup,
                 )
             await asyncio.sleep(4)
