@@ -46,10 +46,10 @@ except:
         # DATABASE_URL = "dbname=tortk user=postgres password=your-pass host=db port=5432"
 
         # MEGA CONFIG
-        MEGA_ENABLE = True
-        MEGA_API = "5FS1vUr7h_ctqk_CvTzhzg"
-        MEGA_UNAME = "Vijay Adithya"
-        MEGA_PASS = "Adithya3300"
+        MEGA_ENABLE = ""
+        MEGA_API = ""
+        MEGA_UNAME = ""
+        MEGA_PASS = ""
 
         # The base direcory to which the files will be upload if using RCLONE
         RCLONE_BASE_DIR = "/"
@@ -72,10 +72,10 @@ except:
         DEF_RCLONE_DRIVE = ""
 
         # Max size of a playlist that is allowed (Number of videos)
-        MAX_YTPLAYLIST_SIZE = 20
+        MAX_YTPLAYLIST_SIZE = 50
 
         # Max size of the torrent allowed
-        MAX_TORRENT_SIZE = 30
+        MAX_TORRENT_SIZE = 100
 
         # Set this to your bot username if you want to add the username of your bot at the end of the commands like
         # /leech@TorToolkitBot so the value will be @TorToolkitBot
